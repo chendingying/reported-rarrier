@@ -1,7 +1,7 @@
 package com.reported.rarrier.util;
 
-import com.reported.rarrier.jwt.AuthTokenDetails;
-import com.reported.rarrier.jwt.JsonWebTokenUtility;
+//import com.reported.rarrier.jwt.AuthTokenDetails;
+//import com.reported.rarrier.jwt.JsonWebTokenUtility;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -12,7 +12,7 @@ import java.util.Date;
 
 
 /**
- * 实体类相关工具类 
+ * 实体类相关工具类
  * 解决问题： 1、快速对实体的常驻字段，如：crtUser、crtHost、updUser等值快速注入
  *
  * @author Ace
@@ -22,17 +22,17 @@ import java.util.Date;
  */
 public class EntityUtils {
 
-	private static AuthTokenDetails parseToken(String tokenHeader) {
-		JsonWebTokenUtility tokenService = new JsonWebTokenUtility();
-		AuthTokenDetails authTokenDetails =
-				tokenService.parseAndValidate(tokenHeader);
-		return authTokenDetails;
-	}
+//	private static AuthTokenDetails parseToken(String tokenHeader) {
+//		JsonWebTokenUtility tokenService = new JsonWebTokenUtility();
+//		AuthTokenDetails authTokenDetails =
+//				tokenService.parseAndValidate(tokenHeader);
+//		return authTokenDetails;
+//	}
 
 	/**
 	 * 快速将bean的crtUser、crtHost、crtTime、updUser、updHost、updTime附上相关值
 	 *
-	 * @param entity 实体bean 
+	 * @param entity 实体bean
 	 * @author 王浩彬
 	 */
 	public static <T> void setCreatAndUpdatInfo(T entity) {
@@ -52,12 +52,12 @@ public class EntityUtils {
 		String hostIp = "";
 		String name = "";
 		String id = "";
-		if(request!=null) {
-			hostIp = request.getRemoteAddr();
-			AuthTokenDetails userDetails = parseToken(StringUtils.trimToEmpty(request.getHeader("Authorization")));
-			name = userDetails.getUsername();
-			id = userDetails.getId().toString();
-		}
+//		if(request!=null) {
+//			hostIp = request.getRemoteAddr();
+//			AuthTokenDetails userDetails = parseToken(StringUtils.trimToEmpty(request.getHeader("Authorization")));
+//			name = userDetails.getUsername();
+//			id = userDetails.getId().toString();
+//		}
 
 		if (StringUtils.isBlank(name)) {
 			name = BaseContextHandler.getUsername();
@@ -89,12 +89,12 @@ public class EntityUtils {
 		String hostIp = "";
 		String name = "";
 		String id = "";
-		if(request!=null) {
-			AuthTokenDetails userDetails = parseToken(StringUtils.trimToEmpty(request.getHeader("Authorization")));
-			hostIp = request.getRemoteAddr();
-			name = userDetails.getUsername();
-			id = userDetails.getId().toString();
-		}
+//		if(request!=null) {
+//			AuthTokenDetails userDetails = parseToken(StringUtils.trimToEmpty(request.getHeader("Authorization")));
+//			hostIp = request.getRemoteAddr();
+//			name = userDetails.getUsername();
+//			id = userDetails.getId().toString();
+//		}
 
 		if (StringUtils.isBlank(name)) {
 			name = BaseContextHandler.getUsername();
