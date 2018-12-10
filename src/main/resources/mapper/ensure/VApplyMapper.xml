@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.reported.rarrier.mapper.ensure.VApplyMapper">
+    <resultMap id="BaseResultMap" type="com.reported.rarrier.model.ensure.VApply">
+
+    </resultMap>
+
+    <select id="selectVApplyAll" resultType="com.reported.rarrier.model.ensure.VApply">
+        select v.* from VApply v where 1=1
+        <if test="applyId != null">
+            and applyId = #{applyId}
+        </if>
+        <if test="applyDateBegin != null and applyDateEnd != null">
+           and CONVERT(varchar(100),v.ApplyDate,23) between #{applyDateBegin} AND #{applyDateEnd}
+        </if>
+        order by v.ApplyId desc
+    </select>
+</mapper>
