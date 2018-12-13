@@ -8,10 +8,15 @@ import com.reported.rarrier.util.BaseBiz;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by CDZ on 2018/12/13.
  */
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class SolutionBiz extends BaseBiz<SolutionMapper,Solution> {
+    public List<Solution> selectSolutionByApplyId(String applyId){
+        return mapper.selectSolutionByApplyId(applyId);
+    }
 }

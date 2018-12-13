@@ -4,11 +4,13 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.reported.rarrier.mapper.ensure.ApplyMapper;
 import com.reported.rarrier.model.ensure.Apply;
+import com.reported.rarrier.model.request.UpdateApplyRequest;
 import com.reported.rarrier.util.BaseBiz;
 import com.reported.rarrier.util.Query;
 import com.reported.rarrier.util.TableResultResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 import tk.mybatis.mapper.entity.Example;
 
 import java.lang.reflect.ParameterizedType;
@@ -61,5 +63,15 @@ public class ApplyBiz extends BaseBiz<ApplyMapper,Apply> {
         Page<Object> result = PageHelper.startPage(query.getPage(), query.getLimit());
         List<Apply> list = mapper.selectByExample(example);
         return new TableResultResponse<Apply>(result.getTotal(), list);
+    }
+
+    public void update(Apply apply){
+        Example example = new Example(Apply.class);
+        example.selectProperties("equipTypeCode");
+        Example.Criteria criteria = example.createCriteria();
+        Apply apply1 = new Apply();
+        apply1.setApplyDept(apply.getApplyDept());
+        criteria.andEqualTo("applyId", "187");
+        mapper.updateByPrimaryKey(apply1);
     }
 }

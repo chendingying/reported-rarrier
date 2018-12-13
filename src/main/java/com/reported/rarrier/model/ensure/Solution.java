@@ -1,6 +1,7 @@
 package com.reported.rarrier.model.ensure;
 
 import javax.persistence.Column;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
@@ -10,6 +11,7 @@ import java.util.Date;
 @Table(name = "Solution")
 public class Solution {
 
+    @Id
     @Column(name = "SolutionId")
     Integer solutionId;
     @Column(name = "ApplyId")

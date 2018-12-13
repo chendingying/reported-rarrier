@@ -11,6 +11,7 @@ import com.reported.rarrier.util.TableResultResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -41,16 +42,15 @@ public class SolutionController  {
         return new ObjectRestResponse<Solution>();
     }
 
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/{applyId}",method = RequestMethod.GET)
     @ResponseBody
-    public ObjectRestResponse<Solution> get(@PathVariable int id){
+    public List<Solution> get(@PathVariable String applyId){
         ObjectRestResponse<Solution> entityObjectRestResponse = new ObjectRestResponse<>();
-        Object o = baseBiz.selectById(id);
-        entityObjectRestResponse.data((Solution)o);
-        return entityObjectRestResponse;
+        List<Solution> solutionList = baseBiz.selectSolutionByApplyId(applyId);
+        return solutionList;
     }
 
-    @RequestMapping(value = "/{id}",method = RequestMethod.PUT)
+    @RequestMapping(value = "/{applyId}",method = RequestMethod.PUT)
     @ResponseBody
     public ObjectRestResponse<Solution> update(@RequestBody Solution entity){
         baseBiz.updateSelectiveById(entity);

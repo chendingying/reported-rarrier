@@ -5,10 +5,15 @@
 
     </resultMap>
 
+    <!-- 明细查询 -->
     <select id="selectByApplyId" resultType="com.reported.rarrier.model.ensure.Apply">
         select a.* from Apply a where 1=1
         <if test="applyId != null">
             and ApplyId = #{applyId}
         </if>
     </select>
+
+    <!--<update id="updateApply">-->
+     <!--update Apply set c_status = #{equipTypeCode} where vc_pid = #{picAttrib.vcPid}-->
+    <!--</update>-->
 </mapper>

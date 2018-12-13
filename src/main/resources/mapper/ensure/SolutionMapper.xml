@@ -12,8 +12,8 @@
         <id column="SolutionFlag" property="solutionFlag"/>
     </resultMap>
 
-    <update id="updateSolution">
-          update pic_attrib set c_status = #{picAttrib.cStatus} where vc_pid = #{picAttrib.vcPid}
-    </update>
 
+    <select id="selectSolutionByApplyId" resultMap="BaseResultMap">
+        select * from Solution where ApplyId = #{applyId}
+    </select>
 </mapper>

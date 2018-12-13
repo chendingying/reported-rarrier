@@ -1,21 +1,15 @@
-package com.reported.rarrier.model.ensure;
+package com.reported.rarrier.model.request;
 
 import javax.persistence.Column;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.util.Date;
 
 /**
- * Created by CDZ on 2018/12/7.
+ * Created by CDZ on 2018/12/13.
  */
 @Table(name = "Apply")
-public class Apply {
-
-
-    @Id
-    @Column(name = "ApplyId")
-    private Integer applyId;
+public class UpdateApplyRequest {
 
     @Column(name = "EquipTypeCode")
     private Integer equipTypeCode;
@@ -115,13 +109,6 @@ public class Apply {
         this.applyDateEnd = applyDateEnd;
     }
 
-    public Integer getApplyId() {
-        return applyId;
-    }
-
-    public void setApplyId(Integer applyId) {
-        this.applyId = applyId;
-    }
 
     public Integer getEquipTypeCode() {
         return equipTypeCode;
@@ -226,9 +213,9 @@ public class Apply {
 
     public String getApplyPhone() {
         if(applyPhone == null){
-            return applyPhone;
+            return applyPhone.trim();
         }
-        return applyPhone.trim();
+        return applyPhone;
     }
 
     public void setApplyPhone(String applyPhone) {
