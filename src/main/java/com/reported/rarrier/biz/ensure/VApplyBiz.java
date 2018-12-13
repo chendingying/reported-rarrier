@@ -18,4 +18,5 @@ public class VApplyBiz extends BaseBiz<VApplyMapper,VApply> {
     public List<VApply> selectVApplyAll(Date applyDateBegin, Date applyDateEnd,String applyId){
         return mapper.selectVApplyAll(applyDateBegin,applyDateEnd,applyId);
     }
+
 }

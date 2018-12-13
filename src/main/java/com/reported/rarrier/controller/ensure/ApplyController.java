@@ -5,10 +5,13 @@ import com.reported.rarrier.controller.base.ApplyBaseController;
 import com.reported.rarrier.model.ensure.Apply;
 import com.reported.rarrier.model.ensure.VApply;
 import com.reported.rarrier.util.ObjectRestResponse;
+import com.reported.rarrier.util.Query;
+import com.reported.rarrier.util.TableResultResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Timestamp;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -21,7 +24,7 @@ import java.util.Map;
 @RequestMapping("/api/ensure/apply")
 public class ApplyController extends ApplyBaseController<ApplyBiz,Apply> {
 
-    //带参数查询
+    //明细
     @RequestMapping(value = "",method = RequestMethod.GET)
     @ResponseBody
     public ObjectRestResponse<Apply> get(@RequestParam Map<String, Object> params){
@@ -33,6 +36,19 @@ public class ApplyController extends ApplyBaseController<ApplyBiz,Apply> {
         return entityObjectRestResponse;
     }
 
+    // 分页查询
+    @RequestMapping(value = "/page",method = RequestMethod.GET)
+    @ResponseBody
+    public TableResultResponse<Apply> list(@RequestParam Map<String, Object> params) throws ParseException {
+        if(params.get("_") != null){
+            params.remove("_");
+        }
+        //查询列表数据
+        Query query = new Query(params);
+        return baseBiz.selectByQuery(query);
+    }
+
+    //查询所有
     @RequestMapping(value = "/all",method = RequestMethod.GET)
     @ResponseBody
     public List<VApply> all(@RequestParam Map<String, Object> params){
