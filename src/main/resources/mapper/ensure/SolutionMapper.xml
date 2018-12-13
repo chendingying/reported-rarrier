@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.reported.rarrier.mapper.ensure.SolutionMapper">
+    <resultMap id="BaseResultMap" type="com.reported.rarrier.model.ensure.Solution">
+        <id column="SolutionId" property="solutionId"/>
+        <id column="ApplyId" property="applyId"/>
+        <id column="SLTSection" property="sLTSection"/>
+        <id column="SNote" property="sNote"/>
+        <id column="SLTDate" property="sLTDate"/>
+        <id column="Logon_Name" property="logon_Name"/>
+        <id column="Display_Name" property="display_Name"/>
+        <id column="SolutionFlag" property="solutionFlag"/>
+    </resultMap>
+
+    <update id="updateSolution">
+          update pic_attrib set c_status = #{picAttrib.cStatus} where vc_pid = #{picAttrib.vcPid}
+    </update>
+
+</mapper>

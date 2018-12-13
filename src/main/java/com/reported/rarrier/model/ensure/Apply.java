@@ -11,6 +11,8 @@ import java.util.Date;
  */
 @Table(name = "Apply")
 public class Apply {
+
+
     @Column(name = "ApplyId")
     private Integer applyId;
 
@@ -95,6 +97,7 @@ public class Apply {
     @Transient
     private Date applyDateEnd;
 
+
     public Date getApplyDateBegin() {
         return applyDateBegin;
     }
@@ -116,7 +119,7 @@ public class Apply {
     }
 
     public void setApplyId(Integer applyId) {
-        applyId = applyId;
+        this.applyId = applyId;
     }
 
     public Integer getEquipTypeCode() {
