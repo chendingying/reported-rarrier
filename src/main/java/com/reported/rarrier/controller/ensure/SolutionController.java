@@ -59,7 +59,11 @@ public class SolutionController  {
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     @ResponseBody
     public ObjectRestResponse<Solution> remove(@PathVariable int id){
-        baseBiz.deleteById(id);
+        Integer type = baseBiz.deleteById(id);
+        ObjectRestResponse objectRestResponse = new ObjectRestResponse<Solution>();
+        if(type == 1){
+            objectRestResponse.rel(true);
+        }
         return new ObjectRestResponse<Solution>();
     }
 }
