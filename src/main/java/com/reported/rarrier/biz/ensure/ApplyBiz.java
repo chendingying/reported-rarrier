@@ -35,6 +35,7 @@ public class ApplyBiz extends BaseBiz<ApplyMapper,Apply> {
     public TableResultResponse<Apply> selectByQuery(Query query)  {
         Class<Apply> clazz = (Class<Apply>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[1];
         Example example = new Example(clazz);
+        example.setOrderByClause("ApplyId DESC");
         if(query.entrySet().size()>0) {
             DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
             Date applyDateBegin = null;
