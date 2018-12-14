@@ -53,8 +53,12 @@ public class SolutionController  {
     @RequestMapping(value = "/{applyId}",method = RequestMethod.PUT)
     @ResponseBody
     public ObjectRestResponse<Solution> update(@RequestBody Solution entity){
-        baseBiz.updateSelectiveById(entity);
-        return new ObjectRestResponse<Solution>();
+        ObjectRestResponse objectRestResponse = new ObjectRestResponse<Solution>();
+        Integer type = baseBiz.updateSelectiveById(entity);
+        if(type == 1){
+            objectRestResponse.rel(true);
+        }
+        return objectRestResponse;
     }
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     @ResponseBody

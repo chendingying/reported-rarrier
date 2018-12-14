@@ -42,8 +42,12 @@ public class ApplyBaseController<Biz extends BaseBiz,Entity>  {
     @RequestMapping(value = "/{id}",method = RequestMethod.PUT)
     @ResponseBody
     public ObjectRestResponse<Entity> update(@RequestBody Entity entity){
-        baseBiz.updateSelectiveById(entity);
-        return new ObjectRestResponse<Entity>();
+        ObjectRestResponse objectRestResponse = new ObjectRestResponse<Entity>();
+        Integer type = baseBiz.updateSelectiveById(entity);
+        if(type == 1){
+            objectRestResponse.rel(true);
+        }
+        return objectRestResponse;
     }
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     @ResponseBody
