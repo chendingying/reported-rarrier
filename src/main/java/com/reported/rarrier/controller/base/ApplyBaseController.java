@@ -48,8 +48,12 @@ public class ApplyBaseController<Biz extends BaseBiz,Entity>  {
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     @ResponseBody
     public ObjectRestResponse<Entity> remove(@PathVariable int id){
-        baseBiz.deleteById(id);
-        return new ObjectRestResponse<Entity>();
+        Integer type =  baseBiz.deleteById(id);
+        ObjectRestResponse objectRestResponse = new ObjectRestResponse<Entity>();
+        if(type == 1){
+            objectRestResponse.rel(true);
+        }
+        return objectRestResponse;
     }
 
     public String getCurrentUserName(){

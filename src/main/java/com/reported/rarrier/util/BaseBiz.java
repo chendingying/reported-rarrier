@@ -63,8 +63,8 @@ public abstract class BaseBiz<M extends Mapper<T>, T> {
     }
 
 
-    public void deleteById(Object id) {
-        mapper.deleteByPrimaryKey(id);
+    public Integer deleteById(Object id) {
+       return mapper.deleteByPrimaryKey(id);
     }
 
 
