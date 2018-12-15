@@ -110,6 +110,24 @@ public class ApplyController extends ApplyBaseController<ApplyBiz,Apply> {
         Apply apply = baseBiz.selectByApplyId(id);
         if(!entity.get("solutionFlag").equals("")){
             apply.setSolutionFlag(Integer.valueOf(entity.get("solutionFlag").toString()));
+        }if(!entity.get("feedBackType").equals("")){
+            apply.setFeedBackType(entity.get("feedBackType").toString());
+        }if(!entity.get("feedBackNote").equals("")){
+            apply.setFeedBackNote(entity.get("feedBackNote").toString());
+        }if(!entity.get("fBLogon_Name").equals("")){
+            apply.setfBLogon_Name(entity.get("fBLogon_Name").toString());
+        }if(!entity.get("fBDisplayName").equals("")){
+            apply.setfBDisplayName(entity.get("fBDisplayName").toString());
+        }if(!entity.get("fBDate").equals("")){
+            apply.setfBDate((Date) entity.get("fBDate"));
+        }if(!entity.get("sLLogon_Name").equals("")){
+            apply.setsLLogon_Name(entity.get("sLLogon_Name").toString());
+        }if(!entity.get("sLDisplayName").equals("")){
+            apply.setsLDisplayName(entity.get("sLDisplayName").toString());
+        }if(!entity.get("sLDate").equals("")){
+            apply.setsLDate((Date) entity.get("sLDate"));
+        }if(!entity.get("cLDate").equals("")){
+            apply.setcLDate((Date) entity.get("cLDate"));
         }
         baseBiz.updateSelectiveById(apply);
         ObjectRestResponse objectRestResponse = new ObjectRestResponse<Apply>();
