@@ -8,9 +8,14 @@ import com.reported.rarrier.model.request.UpdateApplyRequest;
 import com.reported.rarrier.util.ObjectRestResponse;
 import com.reported.rarrier.util.Query;
 import com.reported.rarrier.util.TableResultResponse;
+import com.reported.rarrier.vo.Upload;
+import net.sf.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import tk.mybatis.mapper.entity.Example;
 
+import java.io.IOException;
 import java.security.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -25,6 +30,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/ensure/apply")
 public class ApplyController extends ApplyBaseController<ApplyBiz,Apply> {
+
+    @Autowired
+    Upload upload;
 
     //明细
     @RequestMapping(value = "",method = RequestMethod.GET)
@@ -71,6 +79,16 @@ public class ApplyController extends ApplyBaseController<ApplyBiz,Apply> {
             e.printStackTrace();
         }
         return vApplyBiz.selectVApplyAll(applyDateBegin,applyDateEnd,applyId);
+    }
+
+    @RequestMapping(value = "",method = RequestMethod.POST)
+    @ResponseBody
+    public ObjectRestResponse<Apply> add(@RequestParam("file") MultipartFile file,@RequestParam("apply") String stringApply) throws IOException {
+        //将字符串转json格式
+        JSONObject jsStr = JSONObject.fromObject(stringApply);
+        Apply apply = (Apply) JSONObject.toBean(jsStr,Apply.class);
+        upload.uploadFile(file,apply);
+        return new ObjectRestResponse<Apply>();
     }
 
 
