@@ -108,25 +108,25 @@ public class ApplyController extends ApplyBaseController<ApplyBiz,Apply> {
     @ResponseBody
     public ObjectRestResponse<Apply> update(@PathVariable("id") String id,@RequestBody Map<String,Object> entity){
         Apply apply = baseBiz.selectByApplyId(id);
-        if(!entity.get("solutionFlag").equals("")){
+        if(entity.get("solutionFlag") != null){
             apply.setSolutionFlag(Integer.valueOf(entity.get("solutionFlag").toString()));
-        }if(!entity.get("feedBackType").equals("")){
+        }if(entity.get("feedBackType") != null){
             apply.setFeedBackType(entity.get("feedBackType").toString());
-        }if(!entity.get("feedBackNote").equals("")){
+        }if(entity.get("feedBackNote") != null){
             apply.setFeedBackNote(entity.get("feedBackNote").toString());
-        }if(!entity.get("fBLogon_Name").equals("")){
+        }if(entity.get("fBLogon_Name") != null){
             apply.setfBLogon_Name(entity.get("fBLogon_Name").toString());
-        }if(!entity.get("fBDisplayName").equals("")){
+        }if(entity.get("fBDisplayName") != null){
             apply.setfBDisplayName(entity.get("fBDisplayName").toString());
-        }if(!entity.get("fBDate").equals("")){
+        }if(entity.get("fBDate") != null){
             apply.setfBDate((Date) entity.get("fBDate"));
-        }if(!entity.get("sLLogon_Name").equals("")){
+        }if(entity.get("sLLogon_Name") != null){
             apply.setsLLogon_Name(entity.get("sLLogon_Name").toString());
-        }if(!entity.get("sLDisplayName").equals("")){
+        }if(entity.get("sLDisplayName") != null){
             apply.setsLDisplayName(entity.get("sLDisplayName").toString());
-        }if(!entity.get("sLDate").equals("")){
+        }if(entity.get("sLDate") != null){
             apply.setsLDate((Date) entity.get("sLDate"));
-        }if(!entity.get("cLDate").equals("")){
+        }if(entity.get("cLDate") != null){
             apply.setcLDate((Date) entity.get("cLDate"));
         }
         baseBiz.updateSelectiveById(apply);
