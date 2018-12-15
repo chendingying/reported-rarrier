@@ -33,7 +33,7 @@ public class Upload {
         String id = String.valueOf(System.currentTimeMillis() + rnd.nextInt(1000));
         //获取文件后缀名
         String suffix = multipartFile.getOriginalFilename().substring(multipartFile.getOriginalFilename().lastIndexOf("."));
-        String upath = hdd + "\\" + "reported_rarrier\\upload";
+        String upath = hdd;
         //映射物理路径
         String file = upath + "\\" + id + suffix;
         byte[] bytes = multipartFile.getBytes();
