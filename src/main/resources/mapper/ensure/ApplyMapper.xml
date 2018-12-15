@@ -16,4 +16,7 @@
     <!--<update id="updateApply">-->
      <!--update Apply set c_status = #{equipTypeCode} where vc_pid = #{picAttrib.vcPid}-->
     <!--</update>-->
+    <select id="countApply" resultType="java.lang.Integer">
+        select count(*) from Apply a where a.SolutionFlag = #{SolutionFlag}
+    </select>
 </mapper>

@@ -42,6 +42,9 @@ public class ApplyController extends ApplyBaseController<ApplyBiz,Apply> {
         if(params.get("applyId") != null && !params.get("applyId").equals("")){
             Apply o = baseBiz.selectByApplyId(params.get("applyId").toString());
             entityObjectRestResponse.data((Apply)o);
+        }if(params.get("ApplyId") != null && !params.get("ApplyId").equals("")){
+            Apply o = baseBiz.selectByApplyId(params.get("ApplyId").toString());
+            entityObjectRestResponse.data((Apply)o);
         }
         return entityObjectRestResponse;
     }
@@ -67,7 +70,9 @@ public class ApplyController extends ApplyBaseController<ApplyBiz,Apply> {
         Date applyDateEnd = null;
         String applyId = null;
         try{
-            if(params.get("applyId") != null){
+            if(params.get("ApplyId") != null){
+                applyId = params.get("ApplyId").toString();
+            }if(params.get("applyId") != null){
                 applyId = params.get("applyId").toString();
             }
             if(params.get("applyDateBegin") != null){
@@ -89,6 +94,14 @@ public class ApplyController extends ApplyBaseController<ApplyBiz,Apply> {
         Apply apply = (Apply) JSONObject.toBean(jsStr,Apply.class);
         upload.uploadFile(file,apply);
         return new ObjectRestResponse<Apply>();
+    }
+
+    @RequestMapping(value = "/countApply/{SolutionFlag}",method = RequestMethod.GET)
+    public ObjectRestResponse<Integer> countApply(@PathVariable("SolutionFlag") Integer SolutionFlag){
+        ObjectRestResponse<Integer> entityObjectRestResponse = new ObjectRestResponse<>();
+        entityObjectRestResponse.data((Integer) baseBiz.countApply(SolutionFlag));
+        entityObjectRestResponse.rel(true);
+        return entityObjectRestResponse;
     }
 
 

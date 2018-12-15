@@ -23,12 +23,6 @@ public class ApplyBaseController<Biz extends BaseBiz,Entity>  {
     @Autowired
     protected VApplyBiz vApplyBiz;
 
-    @RequestMapping(value = "",method = RequestMethod.POST)
-    @ResponseBody
-    public ObjectRestResponse<Entity> add(@RequestBody Entity entity){
-        baseBiz.insertSelective(entity);
-        return new ObjectRestResponse<Entity>();
-    }
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
     @ResponseBody

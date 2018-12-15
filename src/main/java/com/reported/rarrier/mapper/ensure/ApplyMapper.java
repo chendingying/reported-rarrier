@@ -9,4 +9,5 @@ import tk.mybatis.mapper.common.Mapper;
  */
 public interface ApplyMapper extends Mapper<Apply> {
     Apply selectByApplyId(@Param("applyId") String applyId);
+    Integer countApply(@Param("SolutionFlag") Integer SolutionFlag);
 }

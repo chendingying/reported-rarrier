@@ -15,362 +15,362 @@ public class Apply {
 
     @Id
     @Column(name = "ApplyId")
-    private Integer applyId;
+    private Integer ApplyId;
 
     @Column(name = "EquipTypeCode")
-    private Integer equipTypeCode;
+    private Integer EquipTypeCode;
 
     @Column(name = "EquipNameCode")
-    private String equipNameCode;
+    private String EquipNameCode;
 
     @Column(name = "EquipCustomsCode")
-    private String equipCustomsCode;
+    private String EquipCustomsCode;
 
     @Column(name = "ApplyNote")
-    private String applyNote;
+    private String ApplyNote;
 
     @Column(name = "ApplyDept")
-    private String applyDept;
+    private String ApplyDept;
 
     @Column(name = "ApplyOU")
-    private String applyOU;
+    private String ApplyOU;
 
     @Column(name = "ApplySec")
-    private String applySec;
+    private String ApplySec;
 
     @Column(name = "ApplyLogon_Name")
-    private String applyLogon_Name;
+    private String ApplyLogon_Name;
 
     @Column(name = "ApplyDisplayName")
-    private String applyDisplayName;
+    private String ApplyDisplayName;
 
     @Column(name = "ApplyDate")
-    private Date applyDate;
+    private Date ApplyDate;
 
     @Column(name = "ApplyPhone")
-    private String applyPhone;
+    private String ApplyPhone;
 
     @Column(name = "FeedBackType")
-    private String feedBackType;
+    private String FeedBackType;
 
     @Column(name = "FeedBackNote")
-    private String  feedBackNote;
+    private String  FeedBackNote;
 
     @Column(name = "FBLogon_Name")
-    private String fBLogon_Name;
+    private String FBLogon_Name;
 
     @Column(name = "FBDisplayName")
-    private String fBDisplayName;
+    private String FBDisplayName;
 
     @Column(name = "FBDate")
-    private Date fBDate;
+    private Date FBDate;
 
     @Column(name = "SLTSection")
-    private Integer sLTSection;
+    private Integer SLTSection;
 
     @Column(name = "SolutionFlag")
-    private Integer solutionFlag;
+    private Integer SolutionFlag;
 
     @Column(name = "TroubleCodeStr")
-    private String troubleCodeStr;
+    private String TroubleCodeStr;
 
     @Column(name = "Sort")
-    private String sort;
+    private String Sort;
 
     @Column(name = "SLLogon_Name")
-    private String sLLogon_Name;
+    private String SLLogon_Name;
 
     @Column(name = "SLDisplayName")
-    private String sLDisplayName;
+    private String SLDisplayName;
 
     @Column(name = "SLDate")
-    private Date sLDate;
+    private Date SLDate;
 
     @Column(name = "UploadFile")
-    private String uploadFile;
+    private String UploadFile;
 
     @Column(name = "CLDate")
-    private Date cLDate;
+    private Date CLDate;
 
     @Transient
-    private Date applyDateBegin;
+    private Date ApplyDateBegin;
 
     @Transient
-    private Date applyDateEnd;
+    private Date ApplyDateEnd;
 
 
     public Date getApplyDateBegin() {
-        return applyDateBegin;
+        return ApplyDateBegin;
     }
 
-    public void setApplyDateBegin(Date applyDateBegin) {
-        this.applyDateBegin = applyDateBegin;
+    public void setApplyDateBegin(Date ApplyDateBegin) {
+        this.ApplyDateBegin = ApplyDateBegin;
     }
 
     public Date getApplyDateEnd() {
-        return applyDateEnd;
+        return ApplyDateEnd;
     }
 
-    public void setApplyDateEnd(Date applyDateEnd) {
-        this.applyDateEnd = applyDateEnd;
+    public void setApplyDateEnd(Date ApplyDateEnd) {
+        this.ApplyDateEnd = ApplyDateEnd;
     }
 
     public Integer getApplyId() {
-        return applyId;
+        return ApplyId;
     }
 
-    public void setApplyId(Integer applyId) {
-        this.applyId = applyId;
+    public void setApplyId(Integer ApplyId) {
+        this.ApplyId = ApplyId;
     }
 
     public Integer getEquipTypeCode() {
-        return equipTypeCode;
+        return EquipTypeCode;
     }
 
-    public void setEquipTypeCode(Integer equipTypeCode) {
-        this.equipTypeCode = equipTypeCode;
+    public void setEquipTypeCode(Integer EquipTypeCode) {
+        this.EquipTypeCode = EquipTypeCode;
     }
 
     public String getEquipNameCode() {
-        return equipNameCode;
+        return EquipNameCode;
     }
 
-    public void setEquipNameCode(String equipNameCode) {
-        this.equipNameCode = equipNameCode;
+    public void setEquipNameCode(String EquipNameCode) {
+        this.EquipNameCode = EquipNameCode;
     }
 
     public String getEquipCustomsCode() {
-        if(equipNameCode == null){
-            return equipCustomsCode;
+        if(EquipNameCode == null){
+            return EquipCustomsCode;
         }
-        return equipCustomsCode.trim();
+        return EquipCustomsCode.trim();
     }
 
-    public void setEquipCustomsCode(String equipCustomsCode) {
-        this.equipCustomsCode = equipCustomsCode;
+    public void setEquipCustomsCode(String EquipCustomsCode) {
+        this.EquipCustomsCode = EquipCustomsCode;
     }
 
     public String getApplyNote() {
-        if(applyNote == null){
-            return applyNote;
+        if(ApplyNote == null){
+            return ApplyNote;
         }
-        return applyNote.trim();
+        return ApplyNote.trim();
     }
 
-    public void setApplyNote(String applyNote) {
-        this.applyNote = applyNote;
+    public void setApplyNote(String ApplyNote) {
+        this.ApplyNote = ApplyNote;
     }
 
     public String getApplyDept() {
-        if(applyDept == null){
-            return applyDept;
+        if(ApplyDept == null){
+            return ApplyDept;
         }
-        return applyDept.trim();
+        return ApplyDept.trim();
     }
 
-    public void setApplyDept(String applyDept) {
-        this.applyDept = applyDept;
+    public void setApplyDept(String ApplyDept) {
+        this.ApplyDept = ApplyDept;
     }
 
     public String getApplyOU() {
-        if(applyOU == null){
-            return applyOU;
+        if(ApplyOU == null){
+            return ApplyOU;
         }
-        return applyOU.trim();
+        return ApplyOU.trim();
     }
 
-    public void setApplyOU(String applyOU) {
-        this.applyOU = applyOU;
+    public void setApplyOU(String ApplyOU) {
+        this.ApplyOU = ApplyOU;
     }
 
     public String getApplySec() {
-        if(applySec == null){
-            return applySec;
+        if(ApplySec == null){
+            return ApplySec;
         }
-        return applySec.trim();
+        return ApplySec.trim();
     }
 
-    public void setApplySec(String applySec) {
-        this.applySec = applySec;
+    public void setApplySec(String ApplySec) {
+        this.ApplySec = ApplySec;
     }
 
     public String getApplyLogon_Name() {
-        if(applyLogon_Name == null){
-            return applyLogon_Name;
+        if(ApplyLogon_Name == null){
+            return ApplyLogon_Name;
         }
-        return applyLogon_Name.trim();
+        return ApplyLogon_Name.trim();
     }
 
-    public void setApplyLogon_Name(String applyLogon_Name) {
-        this.applyLogon_Name = applyLogon_Name;
+    public void setApplyLogon_Name(String ApplyLogon_Name) {
+        this.ApplyLogon_Name = ApplyLogon_Name;
     }
 
     public String getApplyDisplayName() {
-        if(applyDisplayName == null){
-            return applyDisplayName;
+        if(ApplyDisplayName == null){
+            return ApplyDisplayName;
         }
-        return applyDisplayName.trim();
+        return ApplyDisplayName.trim();
     }
 
-    public void setApplyDisplayName(String applyDisplayName) {
-        this.applyDisplayName = applyDisplayName;
+    public void setApplyDisplayName(String ApplyDisplayName) {
+        this.ApplyDisplayName = ApplyDisplayName;
     }
 
     public Date getApplyDate() {
-        return applyDate;
+        return ApplyDate;
     }
 
-    public void setApplyDate(Date applyDate) {
-        this.applyDate = applyDate;
+    public void setApplyDate(Date ApplyDate) {
+        this.ApplyDate = ApplyDate;
     }
 
     public String getApplyPhone() {
-        if(applyPhone == null){
-            return applyPhone;
+        if(ApplyPhone == null){
+            return ApplyPhone;
         }
-        return applyPhone.trim();
+        return ApplyPhone.trim();
     }
 
-    public void setApplyPhone(String applyPhone) {
-        this.applyPhone = applyPhone;
+    public void setApplyPhone(String ApplyPhone) {
+        this.ApplyPhone = ApplyPhone;
     }
 
     public String getFeedBackType() {
-        if(feedBackType == null){
-            return feedBackType;
+        if(FeedBackType == null){
+            return FeedBackType;
         }
-        return feedBackType.trim();
+        return FeedBackType.trim();
     }
 
-    public void setFeedBackType(String feedBackType) {
-        this.feedBackType = feedBackType;
+    public void setFeedBackType(String FeedBackType) {
+        this.FeedBackType = FeedBackType;
     }
 
     public String getFeedBackNote() {
-        if(feedBackNote == null){
-            return feedBackNote;
+        if(FeedBackNote == null){
+            return FeedBackNote;
         }
-        return feedBackNote.trim();
+        return FeedBackNote.trim();
     }
 
-    public void setFeedBackNote(String feedBackNote) {
-        this.feedBackNote = feedBackNote;
+    public void setFeedBackNote(String FeedBackNote) {
+        this.FeedBackNote = FeedBackNote;
     }
 
-    public String getfBLogon_Name() {
-        if(fBLogon_Name == null){
-            return fBLogon_Name;
+    public String getFBLogon_Name() {
+        if(FBLogon_Name == null){
+            return FBLogon_Name;
         }
-        return fBLogon_Name.trim();
+        return FBLogon_Name.trim();
     }
 
-    public void setfBLogon_Name(String fBLogon_Name) {
-        this.fBLogon_Name = fBLogon_Name;
+    public void setFBLogon_Name(String FBLogon_Name) {
+        this.FBLogon_Name = FBLogon_Name;
     }
 
-    public String getfBDisplayName() {
-        if(fBDisplayName == null){
-            return fBDisplayName;
+    public String getFBDisplayName() {
+        if(FBDisplayName == null){
+            return FBDisplayName;
         }
-        return fBDisplayName.trim();
+        return FBDisplayName.trim();
     }
 
-    public void setfBDisplayName(String fBDisplayName) {
-        this.fBDisplayName = fBDisplayName;
+    public void setFBDisplayName(String FBDisplayName) {
+        this.FBDisplayName = FBDisplayName;
     }
 
-    public Date getfBDate() {
-        return fBDate;
+    public Date getFBDate() {
+        return FBDate;
     }
 
-    public void setfBDate(Date fBDate) {
-        this.fBDate = fBDate;
+    public void setFBDate(Date FBDate) {
+        this.FBDate = FBDate;
     }
 
-    public Integer getsLTSection() {
-        return sLTSection;
+    public Integer getSLTSection() {
+        return SLTSection;
     }
 
-    public void setsLTSection(Integer sLTSection) {
-        this.sLTSection = sLTSection;
+    public void setSLTSection(Integer SLTSection) {
+        this.SLTSection = SLTSection;
     }
 
     public Integer getSolutionFlag() {
-        return solutionFlag;
+        return SolutionFlag;
     }
 
-    public void setSolutionFlag(Integer solutionFlag) {
-        this.solutionFlag = solutionFlag;
+    public void setSolutionFlag(Integer SolutionFlag) {
+        this.SolutionFlag = SolutionFlag;
     }
 
     public String getTroubleCodeStr() {
-        if(troubleCodeStr == null){
-            return troubleCodeStr;
+        if(TroubleCodeStr == null){
+            return TroubleCodeStr;
         }
-        return troubleCodeStr.trim();
+        return TroubleCodeStr.trim();
     }
 
-    public void setTroubleCodeStr(String troubleCodeStr) {
-        this.troubleCodeStr = troubleCodeStr;
+    public void setTroubleCodeStr(String TroubleCodeStr) {
+        this.TroubleCodeStr = TroubleCodeStr;
     }
 
     public String getSort() {
-        if(sort == null){
-            return sort;
+        if(Sort == null){
+            return Sort;
         }
-        return sort.trim();
+        return Sort.trim();
     }
 
-    public void setSort(String sort) {
-        this.sort = sort;
+    public void setSort(String Sort) {
+        this.Sort = Sort;
     }
 
-    public String getsLLogon_Name() {
-        if(sLLogon_Name == null){
-            return sLLogon_Name;
+    public String getSLLogon_Name() {
+        if(SLLogon_Name == null){
+            return SLLogon_Name;
         }
-        return sLLogon_Name.trim();
+        return SLLogon_Name.trim();
     }
 
-    public void setsLLogon_Name(String sLLogon_Name) {
-        this.sLLogon_Name = sLLogon_Name;
+    public void setSLLogon_Name(String SLLogon_Name) {
+        this.SLLogon_Name = SLLogon_Name;
     }
 
-    public String getsLDisplayName() {
-        if(sLDisplayName == null){
-            return sLDisplayName;
+    public String getSLDisplayName() {
+        if(SLDisplayName == null){
+            return SLDisplayName;
         }
-        return sLDisplayName.trim();
+        return SLDisplayName.trim();
     }
 
-    public void setsLDisplayName(String sLDisplayName) {
-        this.sLDisplayName = sLDisplayName;
+    public void setSLDisplayName(String SLDisplayName) {
+        this.SLDisplayName = SLDisplayName;
     }
 
-    public Date getsLDate() {
-        return sLDate;
+    public Date getSLDate() {
+        return SLDate;
     }
 
-    public void setsLDate(Date sLDate) {
-        this.sLDate = sLDate;
+    public void setSLDate(Date SLDate) {
+        this.SLDate = SLDate;
     }
 
     public String getUploadFile() {
-        if(uploadFile == null){
-            return uploadFile;
+        if(UploadFile == null){
+            return UploadFile;
         }
-        return uploadFile.trim();
+        return UploadFile.trim();
     }
 
-    public void setUploadFile(String uploadFile) {
-        this.uploadFile = uploadFile;
+    public void setUploadFile(String UploadFile) {
+        this.UploadFile = UploadFile;
     }
 
-    public Date getcLDate() {
-        return cLDate;
+    public Date getCLDate() {
+        return CLDate;
     }
 
-    public void setcLDate(Date cLDate) {
-        this.cLDate = cLDate;
+    public void setCLDate(Date CLDate) {
+        this.CLDate = CLDate;
     }
 }

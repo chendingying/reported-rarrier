@@ -75,4 +75,8 @@ public class ApplyBiz extends BaseBiz<ApplyMapper,Apply> {
         criteria.andEqualTo("applyId", "187");
         mapper.updateByPrimaryKey(apply1);
     }
+
+    public Integer countApply(Integer SolutionFlag){
+        return mapper.countApply(SolutionFlag);
+    }
 }
