@@ -104,5 +104,18 @@ public class ApplyController extends ApplyBaseController<ApplyBiz,Apply> {
         return entityObjectRestResponse;
     }
 
+    @RequestMapping(value = "/{id}",method = RequestMethod.PUT)
+    @ResponseBody
+    public ObjectRestResponse<Apply> update(@PathVariable("id") String id,@RequestBody Map<String,Object> entity){
+        Apply apply = baseBiz.selectByApplyId(id);
+        if(!entity.get("solutionFlag").equals("")){
+            apply.setSolutionFlag(Integer.valueOf(entity.get("solutionFlag").toString()));
+        }
+        baseBiz.updateSelectiveById(apply);
+        ObjectRestResponse objectRestResponse = new ObjectRestResponse<Apply>();
+        objectRestResponse.rel(true);
+        return objectRestResponse;
+    }
+
 
 }
