@@ -106,7 +106,8 @@ public class ApplyController extends ApplyBaseController<ApplyBiz,Apply> {
 
     @RequestMapping(value = "/{id}",method = RequestMethod.PUT)
     @ResponseBody
-    public ObjectRestResponse<Apply> update(@PathVariable("id") String id,@RequestBody Map<String,Object> entity){
+    public ObjectRestResponse<Apply> update(@PathVariable("id") String id,@RequestBody Map<String,Object> entity) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Apply apply = baseBiz.selectByApplyId(id);
         if(entity.get("solutionFlag") != null){
             apply.setSolutionFlag(Integer.valueOf(entity.get("solutionFlag").toString()));
@@ -119,15 +120,15 @@ public class ApplyController extends ApplyBaseController<ApplyBiz,Apply> {
         }if(entity.get("fBDisplayName") != null){
             apply.setfBDisplayName(entity.get("fBDisplayName").toString());
         }if(entity.get("fBDate") != null){
-            apply.setfBDate((Date) entity.get("fBDate"));
+            apply.setfBDate(sdf.parse(entity.get("fBDate").toString()));
         }if(entity.get("sLLogon_Name") != null){
             apply.setsLLogon_Name(entity.get("sLLogon_Name").toString());
         }if(entity.get("sLDisplayName") != null){
             apply.setsLDisplayName(entity.get("sLDisplayName").toString());
         }if(entity.get("sLDate") != null){
-            apply.setsLDate((Date) entity.get("sLDate"));
+            apply.setsLDate(sdf.parse(entity.get("sLDate").toString()));
         }if(entity.get("cLDate") != null){
-            apply.setcLDate((Date) entity.get("cLDate"));
+            apply.setcLDate(sdf.parse( entity.get("cLDate").toString()));
         }
         baseBiz.updateSelectiveById(apply);
         ObjectRestResponse objectRestResponse = new ObjectRestResponse<Apply>();
