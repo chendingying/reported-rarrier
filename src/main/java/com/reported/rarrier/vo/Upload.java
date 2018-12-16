@@ -45,7 +45,7 @@ public class Upload {
         out.write(bytes);
         out.flush();
         out.close();
-        apply.setUploadFile(file);
+        apply.setUploadFile(id + suffix);
         applyBiz.insertSelective(apply);
         return true;
     }
