@@ -136,5 +136,20 @@ public class ApplyController extends ApplyBaseController<ApplyBiz,Apply> {
         return objectRestResponse;
     }
 
+    @RequestMapping(value = "/countField",method = RequestMethod.GET)
+    public List<Map<String,Object>> countField(@RequestParam Map<String, Object> params) throws ParseException {
+        DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+        String sType = null;
+        Date beginTime = null;
+        Date endTime = null;
+        if(params.get("sType") != null && !params.get("sType").equals("")){
+            sType = params.get("sType").toString();
+        }if(params.get("beginTime") != null){
+            beginTime = format1.parse(params.get("beginTime").toString());
+        }if(params.get("endTime") != null){
+            endTime = format1.parse(params.get("endTime").toString());
+        }
+        return baseBiz.countField(sType,beginTime,endTime);
+    }
 
 }

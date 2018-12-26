@@ -19,4 +19,9 @@
     <select id="countApply" resultType="java.lang.Integer">
         select count(*) from Apply a where a.SolutionFlag = #{SolutionFlag}
     </select>
+
+    <select id="countField" resultType="java.util.HashMap">
+        select ${sType} as SType,count(${sType}) as SCount from Apply where  ApplyDate between #{BeginTime} and dateadd(DAY,1,#{EndTime})
+         GROUP BY ${sType}
+    </select>
 </mapper>
