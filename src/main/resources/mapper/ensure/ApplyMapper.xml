@@ -21,7 +21,10 @@
     </select>
 
     <select id="countField" resultType="java.util.HashMap">
-        select ${sType} as SType,count(${sType}) as SCount from Apply where  ApplyDate between #{BeginTime} and dateadd(DAY,1,#{EndTime})
+        select ${sType} as SType,count(${sType}) as SCount from Apply where 1=1
+        <if test="BeginTime != null and EndTime != null">
+        and  ApplyDate between #{BeginTime} and dateadd(DAY,1,#{EndTime})
+        </if>
          GROUP BY ${sType}
     </select>
 </mapper>
