@@ -11,24 +11,27 @@ import javax.persistence.Table;
 @Table(name = "HZ_State")
 public class HZState {
     @Column(name = "HZS_ID")
-    private Integer HZS_ID;
+    private Integer hZS_ID;
 
     @Column(name = "HZS_Name")
-    private String HZS_Name;
+    private String hZS_Name;
 
-    public Integer getHZS_ID() {
-        return HZS_ID;
+    public Integer gethZS_ID() {
+        return hZS_ID;
     }
 
-    public void setHZS_ID(Integer HZS_ID) {
-        this.HZS_ID = HZS_ID;
+    public void sethZS_ID(Integer hZS_ID) {
+        this.hZS_ID = hZS_ID;
     }
 
-    public String getHZS_Name() {
-        return HZS_Name;
+    public String gethZS_Name() {
+        if(hZS_Name == null){
+            return hZS_Name;
+        }
+        return hZS_Name.trim();
     }
 
-    public void setHZS_Name(String HZS_Name) {
-        this.HZS_Name = HZS_Name;
+    public void sethZS_Name(String hZS_Name) {
+        this.hZS_Name = hZS_Name;
     }
 }

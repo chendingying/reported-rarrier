@@ -12,27 +12,27 @@ import javax.persistence.Table;
 public class FaultType {
 
     @Column(name = "FaultTypeID")
-    private Integer FaultTypeID;
+    private Integer faultTypeID;
 
     @Column(name = "FaultType")
-    private String FaultType;
+    private String faultType;
 
     public Integer getFaultTypeID() {
-        return FaultTypeID;
+        return faultTypeID;
     }
 
     public void setFaultTypeID(Integer faultTypeID) {
-        FaultTypeID = faultTypeID;
+        this.faultTypeID = faultTypeID;
     }
 
     public String getFaultType() {
-        if(FaultType == null){
-            return FaultType;
+        if(faultType == null){
+            return faultType;
         }
-        return FaultType.trim();
+        return faultType.trim();
     }
 
     public void setFaultType(String faultType) {
-        FaultType = faultType;
+        this.faultType = faultType;
     }
 }

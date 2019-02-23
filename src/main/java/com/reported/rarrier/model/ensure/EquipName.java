@@ -10,24 +10,30 @@ import javax.persistence.Table;
 public class EquipName {
     //设备名称编号
     @Column(name = "EquipNameCode")
-    private String EquipNameCode;
+    private String equipNameCode;
     //设备名称
     @Column(name = "EquipNameMess")
-    private String EquipNameMess;
+    private String equipNameMess;
 
     public String getEquipNameCode() {
-        return EquipNameCode;
+        if(equipNameCode == null){
+            return equipNameCode;
+        }
+        return equipNameCode.trim();
     }
 
     public void setEquipNameCode(String equipNameCode) {
-        EquipNameCode = equipNameCode;
+        this.equipNameCode = equipNameCode;
     }
 
     public String getEquipNameMess() {
-        return EquipNameMess;
+        if(equipNameMess == null){
+            return equipNameMess;
+        }
+        return equipNameMess.trim();
     }
 
     public void setEquipNameMess(String equipNameMess) {
-        EquipNameMess = equipNameMess;
+        this.equipNameMess = equipNameMess;
     }
 }
