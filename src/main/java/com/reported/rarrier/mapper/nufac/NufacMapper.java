@@ -11,5 +11,7 @@ import java.util.Map;
  * @Version 1.0
  */
 public interface NufacMapper {
-    List<Map<String,Object>> selectNufac(@Param("asNum") String asNum);
+    List<Map<String,Object>> selectNufac1(@Param("asNum") String asNum);
+
+    List<Map<String,Object>> selectNufac2(@Param("asNum") String asNum);
 }

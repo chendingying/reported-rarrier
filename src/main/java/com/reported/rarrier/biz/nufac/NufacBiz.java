@@ -18,6 +18,10 @@ public class NufacBiz {
     private NufacMapper mapper;
 
     public List<Map<String,Object>> selectNufac(String nufac){
-        return mapper.selectNufac(nufac);
+        List<Map<String,Object>> mapList =  mapper.selectNufac1(nufac);
+        if(mapList.size() == 0){
+            mapList = mapper.selectNufac2(nufac);
+        }
+        return mapList;
     }
 }

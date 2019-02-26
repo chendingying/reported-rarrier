@@ -3,7 +3,7 @@
 <mapper namespace="com.reported.rarrier.mapper.nufac.NufacMapper">
 
 
-    <select id="selectNufac" resultType="java.util.HashMap">
+    <select id="selectNufac1" resultType="java.util.HashMap">
         SELECT TOP 1000 A.AS_NUM, A.AS_NAME, B.AB_NAME, A.FA_NAME, A.AS_MODEL,
       A.AS_ACCE, A.AS_SEL_NUM, C.SC_NAME, A.AS_PRC, A.AS_COL_DATE, A.AS_FIELD1,
       A.AS_FIELD2, A.AS_FIELD3, A.AS_FIELD4, D.UD_PRT_NAME, E.OG_NAME,
@@ -15,5 +15,16 @@ FROM ASSETS A INNER JOIN
           (SELECT OG_NAME, OG_FATHER_ID, OG_ID
          FROM EPS_ORG..ORG_SYS) E ON A.OG_ID = E.OG_ID
 WHERE (A.AS_NUM = #{asNum})
+    </select>
+
+    <select id="selectNufac2" resultType="java.util.HashMap">
+        SELECT TOP 1000 A.AS_NUM, A.AS_NAME, B.AB_NAME, A.FA_NAME, A.AS_MODEL,
+        A.AS_ACCE, A.AS_SEL_NUM, C.SC_NAME, A.AS_PRC, A.AS_COL_DATE, A.AS_FIELD1,
+        A.AS_FIELD2, A.AS_FIELD3, A.AS_FIELD4, ' ' as UD_PRT_NAME, ' ' as  OG_NAME,
+        A.AS_USER, A.AL_USAGE
+        FROM ASSETS A INNER JOIN
+        AS_BRAND B ON A.AB_ID = B.AB_ID INNER JOIN
+        AS_SOURCE C ON A.SC_ID = C.SC_ID
+        WHERE (A.AS_NUM = #{asNum})
     </select>
 </mapper>
