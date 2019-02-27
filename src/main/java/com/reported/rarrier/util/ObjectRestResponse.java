@@ -6,7 +6,7 @@ package com.reported.rarrier.util;
 public class ObjectRestResponse<T> extends BaseResponse {
 
     T data;
-    boolean rel;
+    boolean rel = true;
 
     public boolean isRel() {
         return rel;

@@ -18,6 +18,9 @@
     <!--</update>-->
     <select id="countApply" resultType="java.lang.Integer">
         select count(*) from Apply a where a.SolutionFlag = #{SolutionFlag}
+        <if test="sLTSection != null">
+            and a.SLTSection = #{sLTSection}
+        </if>
     </select>
 
     <select id="countField" resultType="java.util.HashMap">

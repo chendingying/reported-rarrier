@@ -13,6 +13,6 @@ import java.util.Map;
  */
 public interface ApplyMapper extends Mapper<Apply> {
     Apply selectByApplyId(@Param("applyId") String applyId);
-    Integer countApply(@Param("SolutionFlag") Integer SolutionFlag);
+    Integer countApply(@Param("SolutionFlag") Integer SolutionFlag,@Param("sLTSection") Integer sLTSection);
     List<Map<String,Object>> countField(@Param("sType") String sType, @Param("BeginTime") Date beginTime, @Param("EndTime") Date endTime);
 }

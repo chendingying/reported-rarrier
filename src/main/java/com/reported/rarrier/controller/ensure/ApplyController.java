@@ -96,10 +96,10 @@ public class ApplyController extends ApplyBaseController<ApplyBiz,Apply> {
         return new ObjectRestResponse<Apply>();
     }
 
-    @RequestMapping(value = "/countApply/{solutionFlag}",method = RequestMethod.GET)
-    public ObjectRestResponse<Integer> countApply(@PathVariable("solutionFlag") Integer SolutionFlag){
+    @RequestMapping(value = "/countApply/{solutionFlag}/{sLTSection}",method = RequestMethod.GET)
+    public ObjectRestResponse<Integer> countApply(@PathVariable("solutionFlag") Integer SolutionFlag,@PathVariable("sLTSection") Integer sLTSection){
         ObjectRestResponse<Integer> entityObjectRestResponse = new ObjectRestResponse<>();
-        entityObjectRestResponse.data((Integer) baseBiz.countApply(SolutionFlag));
+        entityObjectRestResponse.data((Integer) baseBiz.countApply(SolutionFlag,sLTSection));
         entityObjectRestResponse.rel(true);
         return entityObjectRestResponse;
     }

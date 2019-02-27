@@ -67,8 +67,8 @@ public class ApplyBiz extends BaseBiz<ApplyMapper,Apply> {
     }
 
 
-    public Integer countApply(Integer SolutionFlag){
-        return mapper.countApply(SolutionFlag);
+    public Integer countApply(Integer SolutionFlag,Integer sLTSection){
+        return mapper.countApply(SolutionFlag,sLTSection);
     }
 
     public List<Map<String,Object>> countField(String sType,Date beginTime,Date endTime){
