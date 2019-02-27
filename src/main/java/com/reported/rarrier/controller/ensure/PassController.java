@@ -27,23 +27,10 @@ public class PassController {
         return new ObjectRestResponse<Pass>();
     }
 
-    @RequestMapping(value = "/all",method = RequestMethod.GET)
+    @RequestMapping(value = "/selectPassForApplyId/{applyId}",method = RequestMethod.GET)
     @ResponseBody
-    public List<Pass> all(){
-        return baseBiz.selectListAll();
-    }
-    @RequestMapping(value = "/page",method = RequestMethod.GET)
-    @ResponseBody
-    public TableResultResponse<Pass> list(@RequestParam Map<String, Object> params){
-        if(params.get("_") != null){
-            params.remove("_");
-        }
-        //查询列表数据
-        Query query = new Query(params);
-        return baseBiz.selectByQuery(query);
-    }
-    public String getCurrentUserName(){
-        return BaseContextHandler.getUsername();
+    public ObjectRestResponse selectPassForApplyId(@PathVariable("applyId") Integer applyId){
+       return baseBiz.selectPassForApplyId(applyId);
     }
 
 }

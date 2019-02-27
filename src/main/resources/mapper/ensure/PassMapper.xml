@@ -2,6 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.reported.rarrier.mapper.ensure.PassMapper">
     <resultMap id="BaseResultMap" type="com.reported.rarrier.model.ensure.Pass">
+        <id column="pkid" property="pkid"/>
+        <id column="ApplyId" property="applyId"/>
+        <id column="SLTSection" property="sLTSection"/>
+        <id column="PassNote" property="passNote"/>
+        <id column="Logon_Name" property="logon_Name"/>
+        <id column="Display_Name" property="display_Name"/>
+        <id column="PassTime" property="passTime"/>
     </resultMap>
 
+    <select id="selectPassForApplyId" resultMap="BaseResultMap">
+        select * from Pass where ApplyId = #{applyId}
+    </select>
 </mapper>
