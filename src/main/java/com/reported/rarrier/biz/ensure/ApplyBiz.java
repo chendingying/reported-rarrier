@@ -66,15 +66,6 @@ public class ApplyBiz extends BaseBiz<ApplyMapper,Apply> {
         return new TableResultResponse<Apply>(result.getTotal(), list);
     }
 
-    public void update(Apply apply){
-        Example example = new Example(Apply.class);
-        example.selectProperties("equipTypeCode");
-        Example.Criteria criteria = example.createCriteria();
-        Apply apply1 = new Apply();
-        apply1.setApplyDept(apply.getApplyDept());
-        criteria.andEqualTo("applyId", "187");
-        mapper.updateByPrimaryKey(apply1);
-    }
 
     public Integer countApply(Integer SolutionFlag){
         return mapper.countApply(SolutionFlag);

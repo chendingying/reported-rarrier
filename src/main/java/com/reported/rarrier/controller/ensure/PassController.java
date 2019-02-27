@@ -23,8 +23,7 @@ public class PassController {
     @RequestMapping(value = "",method = RequestMethod.POST)
     @ResponseBody
     public ObjectRestResponse<Pass> add(@RequestBody Pass entity){
-        baseBiz.insertPass(entity);
-        return new ObjectRestResponse<Pass>();
+        return baseBiz.insertPass(entity);
     }
 
     @RequestMapping(value = "/selectPassForApplyId/{applyId}",method = RequestMethod.GET)
