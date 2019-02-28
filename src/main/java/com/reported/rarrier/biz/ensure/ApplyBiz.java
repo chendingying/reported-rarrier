@@ -74,4 +74,8 @@ public class ApplyBiz extends BaseBiz<ApplyMapper,Apply> {
     public List<Map<String,Object>> countField(String sType,Date beginTime,Date endTime){
         return mapper.countField(sType,beginTime,endTime);
     }
+
+    public int insertApply(Apply apply){
+        return mapper.insertSelective(apply);
+    }
 }

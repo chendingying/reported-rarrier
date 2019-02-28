@@ -29,25 +29,37 @@ public class Upload {
 
     public  boolean uploadFile(MultipartFile multipartFile, Apply apply) throws IOException {
 
+        boolean rest = true;
         Random rnd = new Random();
         String id = String.valueOf(System.currentTimeMillis() + rnd.nextInt(1000));
-        //获取文件后缀名
-        String suffix = multipartFile.getOriginalFilename().substring(multipartFile.getOriginalFilename().lastIndexOf("."));
-        String upath = hdd;
-        //映射物理路径
-        String file = upath + "\\" + id + suffix;
-        byte[] bytes = multipartFile.getBytes();
-        File updirFile = new File(upath);
-        if(!updirFile.exists()){
-            updirFile.mkdirs();
+        try{
+            //获取文件后缀名
+            String suffix = multipartFile.getOriginalFilename().substring(multipartFile.getOriginalFilename().lastIndexOf("."));
+            String upath = hdd;
+            //映射物理路径
+            String file = upath + "\\" + id + suffix;
+            byte[] bytes = multipartFile.getBytes();
+            File updirFile = new File(upath);
+            if(!updirFile.exists()){
+                updirFile.mkdirs();
+            }
+            FileOutputStream out = new FileOutputStream(file);
+            out.write(bytes);
+            out.flush();
+            out.close();
+            apply.setUploadFile(id + suffix);
+            int i = applyBiz.insertApply(apply);
+            if(i == 0){
+                rest = false;
+            }else{
+                rest = true;
+            }
+        }catch (Exception e){
+            rest = false;
+            e.printStackTrace();
         }
-        FileOutputStream out = new FileOutputStream(file);
-        out.write(bytes);
-        out.flush();
-        out.close();
-        apply.setUploadFile(id + suffix);
-        applyBiz.insertSelective(apply);
-        return true;
+
+        return rest;
     }
 
 }

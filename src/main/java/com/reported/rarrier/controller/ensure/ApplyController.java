@@ -88,12 +88,29 @@ public class ApplyController extends ApplyBaseController<ApplyBiz,Apply> {
 
     @RequestMapping(value = "",method = RequestMethod.POST)
     @ResponseBody
-    public ObjectRestResponse<Apply> add(@RequestParam("file") MultipartFile file,@RequestParam("apply") String stringApply) throws IOException {
+    public ObjectRestResponse<Apply> add(@RequestParam(value = "file",required=false) MultipartFile file,@RequestParam(value = "apply") String stringApply) throws IOException {
         //将字符串转json格式
         JSONObject jsStr = JSONObject.fromObject(stringApply);
+        ObjectRestResponse objectRestResponse = new ObjectRestResponse();
         Apply apply = (Apply) JSONObject.toBean(jsStr,Apply.class);
-        upload.uploadFile(file,apply);
-        return new ObjectRestResponse<Apply>();
+        if(file != null){
+            boolean rest = upload.uploadFile(file,apply);
+            objectRestResponse.rel(rest);
+            if(rest){
+                objectRestResponse.setMessage("添加成功");
+            }else{
+                objectRestResponse.setMessage("添加失败");
+            }
+        }else{
+           int i =  baseBiz.insertApply(apply);
+            if(i == 1){
+                objectRestResponse.setMessage("添加成功");
+            }else{
+                objectRestResponse.setMessage("添加失败");
+            }
+        }
+
+        return objectRestResponse;
     }
 
     @RequestMapping(value = "/countApply/{solutionFlag}/{sLTSection}",method = RequestMethod.GET)
