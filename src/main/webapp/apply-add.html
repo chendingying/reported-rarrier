@@ -1,0 +1,209 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5shiv.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>报障申请</title>
+<link href="lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="page-container">
+	<form class="form form-horizontal" id="form-apply-add"  method="POST"> 
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">申报人：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+                <input type="text" readonly="true" class="input-text applyDisplayName"  value=""  placeholder="" id="" name="applyDisplayName">
+                <input type="hidden" class="input-text applyLogon_Name"  value=""  placeholder="" id="" name="applyLogon_Name">
+			</div>
+        </div>
+        <div class="row cl hidden">
+			<label class="form-label col-xs-4 col-sm-2">所在科室：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+                <input type="hidden" class="input-text applyDept"  value=""  placeholder="" id="" name="applyDept">
+                 <input  type="hidden" name="applyOU" class="select applyOU">
+				  <input type="text" readonly="true"  class="input-text applySec"  placeholder="" name="applySec">
+                 <input type="hidden" value="1"    name="equipTypeCode">
+                <input type="hidden" value="106"    name="sLTSection">
+			</div>
+        </div>
+        <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2">所在部门：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                     <span class="dept_path"></label>
+                </div>
+        </div>
+        <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>联系方式</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" value="" placeholder="请输入联系方式" id="" name="applyPhone">
+                </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>海关资产编号</label>
+            <div class="formControls col-xs-6 col-sm-9">
+                <input type="text" style="width:180px" class="input-text equipCustomsCode" value="" placeholder="请输入海关资产编号" id="asset_no" name="equipCustomsCode">
+                <button name="" id="btn-asset" class="btn btn-info" type="button"><i class="Hui-iconfont">&#xe665;</i>查询</button>       
+            </div>
+    </div>
+		<div class="row cl hidden">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>设备类型：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+                <input type="text"  class="input-text equipNameCode"  name="equipNameCode">
+			</div>
+		</div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>故障描述：</label>
+            <div class="formControls col-xs-8 col-sm-9"> 
+                <textarea name="applyNote" cols="100" rows="5"></textarea>
+            </div>
+        </div>
+        <div class="row cl ">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>上传图片：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <div class="uploader-thum-container">
+                    <div id="filePicker"></div>
+                    <img id="noimage" src="img_no.gif" class="hidden"></img>
+                </div>
+            </div>
+        </div>
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-8 col-xs-offset-9 col-sm-offset-9">
+				<button class="btn btn-primary btn-add radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 提交申请</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script> 
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer /作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/jquery.validate.js"></script> 
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script> 
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script> 
+<script type="text/javascript" src="lib/webuploader/0.1.5/webuploader.min.js"></script> 
+<script type="text/javascript" src="lib/common.js"></script>
+<script type="text/javascript" src="lib/upload.js"></script> 
+<script type="text/javascript">
+window.file=null;
+var userinfo=window.top.userinfo;
+$(function(){
+	console.log(userinfo);
+    var username=userinfo.objectsDetail.display_name;
+    var loginid=userinfo.objectsDetail.person_id;
+    $(".applyLogon_Name").val(loginid);
+    $(".applyDisplayName").val(username);
+    $(".applyDept").val(userinfo.dept_path_array[1]);
+    $(".applyOU").val(userinfo.dept_path_array[2]);
+    $(".applySec").val(userinfo.dept_path_array[3]);
+	$(".dept_path").html(userinfo.dept_path_array[1]+'\\'+userinfo.dept_path_array[2]+'\\'+userinfo.dept_path_array[3])
+     //图片上传插件
+     var dragImgUpload = new DragImgUpload("#filePicker",{
+       callback:function (files) {
+           //回调函数，可以传递给后台等等
+           window.file = files[0];
+
+       }
+})
+});
+$('.btn-add').on('click',function(){
+    var imgsrc=$("#filePicker").find("img").attr("src");
+    var form=document.querySelector("#form-apply-add");
+    var formData=new FormData();
+    formData.append("apply",JSON.stringify($('form').serializeObject()));
+    formData.append('file',window.file);
+    $.ajax({
+            url:ApiUrl+"apply",
+            type:"POST",
+            data:formData,
+            processData: false, // 必须
+            contentType: false, // 必须
+            success:function(){
+                layer.msg('已提交申请，耐心等待受理!', {icon: 1,time:2000});
+                 setTimeout(function(){ 
+                        window.location.href="apply-list.html";
+                 }, 1000);
+               
+            }
+        });
+    });
+//通过编号查询海关资产信息
+$("#btn-asset").on('click',function(){
+    var asset_no=$('#asset_no').val();
+    if(asset_no){
+        var url="../reportedRarrier/api/nufac/select/"+asset_no;
+        $.get(url,function(data){
+           if(data.rel){
+            var i=data.data[0];
+            var html="<table class='table table-border table-bordered'>";
+                html+="<tr><td>资产编号</td><td>"+i.AS_NUM+"</td><td>资产名称</td><td>"+i.AS_NAME+"</td></tr>";
+                html+="<tr><td>采购价格</td><td>"+i.AS_PRC+"元</td><td>品牌型号</td><td>"+i.AB_NAME+i.AS_MODEL+"</td></tr>";
+                html+="<tr><td>资产来源</td><td>"+i.SC_NAME+"</td><td>登记日期</td><td>"+i.AS_COL_DATE+"</td></tr>";
+                html+="</table>";
+                html+="<div class='pd-5 text-r'><button type='button' class='btn btn-sm btn-primary' id='asset-confirm'>确定</button></div>";
+                layer.open({type: 1, skin: 'layui-layer-rim', area: ['500px', '220px'],content: html });
+                $('#asset-confirm').click(function(){
+                    $('#btn-asset').after(' <strong>'+i.AB_NAME+i.AS_NAME+'</strong>')
+                    $('.equipNameCode').val(i.FA_NUM);
+                    layer.closeAll();
+                });
+            
+           }
+           else{
+               alert('无此设备编号');
+           }
+        });
+    }
+    else{
+        alert('请输入资产编号!');
+    }
+});
+//定义serializeObject方法，序列化表单
+$.fn.serializeObject = function() {
+		var o = {};
+		var a = this.serializeArray();
+		$.each(a, function() {
+			if (o[this.name]) {
+				if (!o[this.name].push) {
+					o[this.name] = [ o[this.name] ];
+				}
+				o[this.name].push(this.value || '');
+			} else {
+				o[this.name] = this.value || '';
+			}
+		});
+		return o;
+}
+function getBase64Image(img) {  
+     var canvas = document.createElement("canvas");  
+     canvas.width = img.width;  
+     canvas.height = img.height;  
+     var ctx = canvas.getContext("2d");  
+     ctx.drawImage(img, 0, 0, img.width, img.height);  
+     var ext = img.src.substring(img.src.lastIndexOf(".")+1).toLowerCase();  
+     var dataURL = canvas.toDataURL("image/"+ext);  
+     return dataURL;  
+}  
+</script>
+</body>
+</html>

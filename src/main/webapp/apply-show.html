@@ -1,0 +1,410 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5shiv.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>用户查看</title>
+</head>
+<body>
+<div class="cl pd-20" style=" background-color:#5bacb6">
+	<dl style="margin-left:80px; color:#fff">
+		<dt>
+			<span class="f-14">申请部门：</span>
+			<span class=" f-14 applyDept"></span>
+		</dt>
+		<dt>
+			<span class="f-14">申请人员：</span>
+			<span class="f-14 applyDisplayName" ></span>
+		</dt>
+		<dt>
+			<span class="f-14">联系方式：</span>
+			<span class="f-14 applyPhone"></span>
+		</dt>
+		<dt>
+			<span class="f-14">申请时间：</span>
+			<span class="f-14 applyDate"></span>
+		</dt>
+		<dt>
+			<span class="f-14">资产编号：</span>
+			<a href="javascript:void(0)" id="btn-asset" class="f-14 equipCustomsCode" ></a>(点击编号可查看详细信息)
+		</dt>
+		<dt>
+			<span class="f-14">故障现象：</span>
+			<span class="f-12 applyNote"></span>
+		</dt>
+		<dt>
+			<span class="f-14">上传图片：</span>
+		</dt>
+		<dt>
+			<span class="uploadFile" style="padding-left: 75px"></span>
+		</dt>
+	</dl>
+</div>
+<div class="pd-20">
+	<table class="table">
+		<tbody>
+			<tr>
+				<th class="text-r" width="80">维修部门：</th>
+				<td class="sectionName"></td>
+			</tr>
+			<tr>
+				<th class="text-r" width="80">维修人员：</th>
+				<td class="sldisplayName"></td>
+			</tr>
+			<tr>
+				<th class="text-r">维修日期：</th>
+				<td class="cldate"></td>
+			</tr>
+			<tr>
+				<th class="text-r">维修过程：</th>
+				<td class="applySolution"></td>
+			</tr>
+			<tr>
+				<th class="text-r">处理状态：</th>
+				<td class="solutionFlagName"></td>
+			</tr>
+			<tr>
+				<th class="text-r">满意度：</th>
+				<td class='feedBackType'>  <div id="star-2" class="star-bar size-M f-l mr-10 va-m"></div></td>
+			</tr>
+			<tr>
+				<th class="text-r">意见：</th>
+				<td class='feedBackNote'></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="cl pd-20 bg-2 bk-gray">
+		<div class="text-l">流转记录:
+			<table class="table table-border table-bordered" id="pass-history">		
+				<thead>
+						<tr><th>流转时间</th><th>流向</th><th>流转原因</th><th>操作人</th></tr>
+				</thead>
+			  <tbody>
+
+				</tbody>
+			</table>
+			</div>		
+</div>
+<div class="cl pd-5 bg-1 bk-gray  hidden accept">
+	<span class="l"><a class="btn btn-primary goHandle"><i class="Hui-iconfont">&#xe63c;</i> 受理 </a>  
+		<a class="btn btn-warning goPass" data-toggle="modal" data-target="#modal-pass"><i class="Hui-iconfont">&#xe644;</i> 流转 </a></span>
+</div>
+<div class="pl-20 bg-1 bk-gray hidden confirm">
+	 <div class="row cl ">
+                <label class="form-label col-xs-4 col-sm-2">满意度</label>
+	            <div id="star-1" class="star-bar size-M f-l mr-10 va-m"></div>
+				<strong id="result" class="f-l va-m">非常满意</strong>
+				<input type="hidden" class="feedBackType" name="feedBackType" value="4">	
+    </div>
+     <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-2">其他意见</label>
+				<input type="text" class="feedBackNote" style="width: 400px" name="feedBackNote" value=""/>
+				<span class=""><a class="btn btn-primary goConfirm"><i class="Hui-iconfont">&#xe63c;</i> 确认 </a></span>
+    </div>
+</div>
+<!--流转对话框-->
+<div id="modal-pass" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content radius">
+				<div class="modal-header">
+					<h3 class="modal-title">业务流转</h3>
+			  		<a class="close" data-dismiss="modal" aria-hidden="true" href="javascript:void();">×</a>
+				</div>
+				<div class="modal-body">
+						<div class="row cl">
+								<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>流转部门</label>
+								<div class="formControls col-xs-8 col-sm-9">
+									<span class="select-box">
+									<select id="dept-select" class="select">
+									</select>
+									</span>
+								</div>
+							</div>
+							<br/>
+							<div class="row cl">
+									<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>流转原因</label>
+									<div class="formControls col-xs-8 col-sm-9"> 
+											<textarea id="passNote" name="passNote" cols="60" rows="5">由系统流转规则确定</textarea>
+									</div>
+							</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-primary" id="pass-comfirm">确定</button>
+					<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+<!--流转对话框-->
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="lib/common.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> 
+<!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script>
+var userinfo=window.top.userinfo;
+$(function(){
+	var id=getUrlParam("id");
+	$.get(ApiUrl+"apply/all?applyId="+id,function(data){
+		var d=data[0];
+		$(".applyDept").html(d.applyDept+"\\"+d.applyOU+"\\"+d.applySec);
+		$(".applyDisplayName").html(d.applyDisplayName);
+		$(".applyPhone").html(d.applyPhone);
+		$(".applyDate").html(d.applyDate);
+		$(".applyDisplayName").html(d.applyDisplayName);
+		$(".equipCustomsCode").html(d.equipCustomsCode);	
+		$(".sldisplayName").html(d.sldisplayName);
+		$(".cldate").html(d.cldate);
+		$(".applyNote").html(d.applyNote);
+		if(d.uploadFile){
+			$('.uploadFile').append("<img src='upload/"+d.uploadFile+"'class='radius' width='200' />")
+		}
+		$.get(ApiUrl+"/solution/page?applyId="+id,function(r){
+			if(r.data.rows.length>0){
+			 $('.applySolution').html(r.data.rows[0].sNote);
+			 $(".sectionName").html(r.data.rows[0].sLTSection);
+			}
+		});
+		$(".solutionFlagName").html(d.solutionFlagName);
+		if(d.feedBackNote){
+			$("#star-2").raty({
+			hints: ['不满意','一般', '满意', '非常满意'],//自定义分数
+			starOff: 'iconpic-star-S-default.png',//默认灰色星星
+			starOn: 'iconpic-star-S.png',//黄色星星
+			path: 'static/h-ui/images/star',//可以是相对路径
+			number: 4,//星星数量，要和hints数组对应
+			showHalf: false,
+			readOnly:true,
+			score:4,
+			targetKeep : true,
+			});
+		}
+		$(".feedBackNote").html(d.feedBackNote);
+		$(".feedBackName").html(d.feedBackName);
+		if(d.solutionFlag==0&&userinfo.userType=="gly"){
+			$('.accept').removeClass('hidden');
+		}
+		else if(d.solutionFlag==2){
+			$('.confirm').removeClass('hidden');
+		}
+	});
+	//读取流转记录
+	$.get(ApiUrl+"pass/selectPassForApplyId/"+id,function(r){
+		var html="";
+		var items=r.data;
+		if(items.length>0){
+			$(items).each(function(i,e){		
+				if(i>0){
+					var sLTSectionName="";
+					switch(e.sLTSection){
+						case '106':
+							sLTSectionName='网络通信科';
+							break;
+						case '100':
+							sLTSectionName='科技处';
+							break;
+						case '107':
+							sLTSectionName='安全运行科';
+							break;
+						case '109':
+							sLTSectionName='通讯科';
+							break;
+						case '204':
+							sLTSectionName='技术研发科';
+							break;
+						default:
+							sLTSectionName='网络通信科';
+							break;
+					}
+					html+="<tr><td>"+e.passTime+"</td><td>"+'网络通信科->'+sLTSectionName+"</td><td>"+e.passNote+"</td><td>"+e.display_Name+"</td></tr>";
+				}
+		});
+		}
+		else{
+			html="<tr><td colspan='4'>没有流转记录</td></tr>";
+		}
+		$("#pass-history").find("tbody").html(html);
+	});
+	//确定转流
+	$("#pass-comfirm").click(function(){
+		  var section_id=$("#dept-select").val();
+			var pass_note=$("#passNote").html();
+			var pass_time=formatDate(new Date());
+			if(pass_note==""){alert('请输入流转原因');return false;}
+			var param={
+									applyId:id,
+									sLTSection:section_id,
+									passNote:pass_note,
+									logon_Name:userinfo.objectsDetail.person_id,
+									display_Name:userinfo.objectsDetail.display_name,
+									passTime:pass_time
+								}
+			$.ajax({
+       url:ApiUrl+"pass",
+	     type:"POST",
+	      data:JSON.stringify(param),
+    	 contentType: 'application/json',
+	     success:function(){
+					layer.msg('流转成功!', {icon: 1,time:2000});
+					setTimeout(function(){ window.location.href="apply-list.html?";}, 3000);
+	  }
+	});		
+			
+	});
+});
+$("#star-1").raty({
+		hints: ['不满意','一般', '满意', '非常满意'],//自定义分数
+		starOff: 'iconpic-star-S-default.png',//默认灰色星星
+		starOn: 'iconpic-star-S.png',//黄色星星
+		path: 'static/h-ui/images/star',//可以是相对路径
+		number: 4,//星星数量，要和hints数组对应
+		showHalf: false,
+		score:4,
+		targetKeep : true,
+		click: function (score, evt) {//点击事件
+			switch(score)
+			{
+				case "1":
+				$("#result").html("不满意");
+				$(".feedBackType").val(score);
+				break;
+				case "2":
+				$("#result").html("一般");
+				$(".feedBackType").val(score);
+				break;
+				case "3":
+				$("#result").html("满意");
+				$(".feedBackType").val(score);
+				break;
+				case "4":
+				$("#result").html("非常满意");
+				$(".feedBackType").val(score);
+				break;
+			}
+			
+		}
+});
+
+$('.goHandle').on('click',function(){
+ var id=getUrlParam("id");
+  var loginid=userinfo.objectsDetail.person_id;
+  var username=userinfo.objectsDetail.display_name;
+  var sldate=formatDate(new Date());
+   $.ajax({
+    url:ApiUrl+"apply/"+id,
+	 type:"PUT",
+	 data:JSON.stringify({"solutionFlag":"1","sLLogon_Name":loginid,"sLDisplayName":username,"sLDate":sldate}),
+	 contentType: 'application/json',
+	 success:function(){
+		  layer.msg('已提交申请,现转至处理流程', {icon: 1,time:2000});
+		  setTimeout(function(){ window.location.href="apply-handle.html?id="+id;}, 3000);
+	  }
+	});				 		
+});
+$('.goPass').on('click',function(){
+	$.get(ApiUrl+"sectionName/all",function(data){
+			var options="";
+			$(data).each(function(i,e){
+				options+="<option value='"+e.sectionId+"'>"+e.sectionName+"</option>";
+			});
+			$("#dept-select").html(options);
+	});
+		
+});
+$('.goConfirm').on('click',function(){
+  var id=getUrlParam("id");
+  var loginid=userinfo.objectsDetail.person_id;
+  var username=userinfo.objectsDetail.display_name;
+  var fbdate=new Date("yyyy-MM-dd hh:mm:ss");
+  var fbtype=$("input[name='feedBackType']").val();
+   var fbNote=$("input[name='feedBackNote']").val();
+   var param={
+   	"solutionFlag":"3",
+   	"fBLogon_Name":loginid,
+   	"fBDisplayName":username,
+   	"fBDate":fbdate,
+   	"feedBackType":fbtype,
+   	"feedBackNote":fbNote
+   }
+   $.ajax({
+    url:ApiUrl+"apply/"+id,
+	 type:"PUT",
+	 data:JSON.stringify(param),
+	 contentType: 'application/json',
+	 success:function(){
+		  layer.msg('意见已提交，谢谢配合！', {icon: 1,time:2000});
+		  setTimeout(function(){ window.location.href="apply-list.html?";}, 3000);
+	  }
+	});				 		
+});
+//通过编号查询海关资产信息
+$("#btn-asset").on('click',function(){
+    var asset_no=$(this).html();
+    if(asset_no){
+        var url="../reportedRarrier/api/nufac/select/"+asset_no;
+        $.get(url,function(data){
+           if(data.rel){
+            var i=data.data[0];
+            var html="<table class='table table-border table-bordered'>";
+                html+="<tr><td>资产编号</td><td>"+i.AS_NUM+"</td><td>资产名称</td><td>"+i.AS_NAME+"</td></tr>";
+                html+="<tr><td>采购价格</td><td>"+i.AS_PRC+"元</td><td>品牌型号</td><td>"+i.AB_NAME+i.AS_MODEL+"</td></tr>";
+                html+="<tr><td>资产来源</td><td>"+i.SC_NAME+"</td><td>登记日期</td><td>"+i.AS_COL_DATE+"</td></tr>";
+                html+="</table>";
+                layer.open({type: 1, skin: 'layui-layer-rim', area: ['500px', '220px'],content: html });
+            
+           }
+           else{
+               alert('无此设备编号');
+           }
+        });
+    }
+    else{
+        alert('无此设备编号!');
+    }
+});
+function getUrlParam(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+}
+//时间格式化
+function formatDate(time){
+    var date = new Date(time);
+    var year = date.getFullYear();
+     var month = date.getMonth() + 1;//月份是从0开始的
+      var  day = date.getDate();
+      var  hour = date.getHours();
+      var  min = date.getMinutes();
+      var  sec = date.getSeconds();
+    var newTime = year + '-' +
+                month + '-' +
+                day + ' ' +
+                hour + ':' +
+                min + ':' +
+                sec;
+    return newTime;         
+}
+</script>
+</body>
+</html>

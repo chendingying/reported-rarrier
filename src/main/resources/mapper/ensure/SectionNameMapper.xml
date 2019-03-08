@@ -2,7 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.reported.rarrier.mapper.ensure.SectionNameMapper">
     <resultMap id="BaseResultMap" type="com.reported.rarrier.model.ensure.SectionName">
-
+        <id column="SectionId" property="sectionId"/>
+        <id column="SectionName" property="sectionName"/>
     </resultMap>
 
+    <select id="selectIdForName" resultMap="BaseResultMap">
+        select * from SectionName where SectionName = #{name}
+    </select>
 </mapper>

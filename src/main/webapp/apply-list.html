@@ -1,0 +1,156 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5shiv.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>图片列表</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 报障管理 <span class="c-gray en">&gt;</span> 报障列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+	<div class="text-c"> 日期范围：
+		<input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'logmax\')||\'%y-%M-%d\'}' })" id="logmin" class="input-text Wdate" style="width:120px;">
+		-
+		<input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'logmin\')}',maxDate:'%y-%M-%d' })" id="logmax" class="input-text Wdate" style="width:120px;">
+		<button name="" id="btn-search" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
+	</div>
+	<div class="cl pd-5 bg-1 bk-gray mt-20 hidden flag"><ul>
+		<li>未受理报障数:<span class="flag0 c-warning"></span> <a class="c-primary" href="apply-flag.html?flag=0">受理</a></li>
+		<li>正在处理报障数:<span  class="flag1 c-warning"></span><a class="c-primary" href="apply-flag.html?flag=1">处理</a></li>
+		<li>未确认报障数:<span  class="flag2 c-warning"></span><a class="c-primary" href="apply-flag.html?flag=2">查看</a></li>
+	</ul></div>
+	<div class="mt-20">
+		<table class="table table-border table-bordered table-bg table-hover table-apply">
+		</table>
+	</div>
+</div>
+
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script> 
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker.js"></script> 
+<script type="text/javascript" src="lib/datatables/1.10.15/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="lib/common.js"></script>
+<script type="text/javascript" src="mock/solution_flag.js"></script>
+<script type="text/javascript">
+var userinfo=window.top.userinfo;
+$(function(){
+	var dpname=userinfo.dept_path_array[2];
+	var sectionId=window.top.userinfo.sectionId;
+	var date1=getUrlParam("date1");
+	var date2=getUrlParam("date2");
+	var url=ApiUrl+'apply/page?page=1&limit=5000';
+	//管理显示统计数字
+	if(userinfo.userType=="gly"){
+		$('.flag').removeClass('hidden');
+		$.get(ApiUrl+'apply/countApply/0/'+sectionId,function(count){ $('.flag0').html(count.data);});
+		$.get(ApiUrl+'apply/countApply/1/'+sectionId,function(count){ $('.flag1').html(count.data);});
+		$.get(ApiUrl+'apply/countApply/2/'+sectionId,function(count){ $('.flag2').html(count.data);});
+		url=url+"&sLTSection="+sectionId;
+	}
+	//普通用户列表只显示本部门信息
+	else{
+		url=ApiUrl+"apply/page?applyOU="+dpname;
+	}
+
+	if(date1){
+		url=url+"&applyDateBegin="+date1+"&applyDateEnd="+date2;
+	}
+	    $('.table-apply').dataTable({
+		ajax:{url:url,dataSrc:"data.rows"},
+		order: [[ 0, 'desc'] ],
+		columns: [
+				{ title: "服务单号",data:"applyId" },
+				{ title: "部门",data:"applyOU" },
+				{ title: "科室",data:"applySec" },
+				{ title: "申请人",data:"applyDisplayName" },
+				{ title: "联系方式",data:"applyPhone" },
+				{ title: "申请时间",data:"applyDate" },
+				{ title: "服务状态",data:"solutionFlag","render":function(data, type, row, meta){return getFlagName(data)}},
+				//操作列开始
+				{ title: "操作",data:"applyId",  "render": function ( data, type, row, meta ) {							
+					    var viewButton= '<a class="btn btn-primary" href=apply-show.html?id='+data+'>查看</a> '; 
+						var editButton=''; 
+						var deleteButton='';
+						var acceptButton='';
+						var solutionButton='';
+						var comfirmButton='';
+						if(row.solutionFlag==0){
+							editButton='<a class="btn btn-warning hidden" href='+data+'>修改</a> ';
+							deleteButton='<a class="btn btn-danger btn-del" onclick="apply_del(this,'+data+')" href="javascript:void(0);">撤销</a> ';
+							if(userinfo.userType=="gly"){
+								acceptButton='<a class="btn btn-primary hidden" href='+data+'>受理</a> ';
+							}
+						}
+						else if(row.solutionFlag==1){
+							solutionButton='<a class="btn btn-success" href="apply-handle.html?id='+data+'">处理</a> ';		
+						}
+						else if(row.solutionFlag==2&&userinfo.userType=="gly"){
+							comfirmButton='<a class="btn btn-primary" href="apply-show'+data+'>确认</a> ';
+						}
+					
+						return viewButton+editButton+deleteButton+acceptButton+solutionButton+comfirmButton;
+					}
+				}
+				//操作列结束
+			],
+	});
+});
+
+$("#btn-search").on("click",function(){
+	var date1=$("#logmin").val();
+	var date2=$("#logmax").val();
+		if(date1==undefined||date2==undefined){
+		alert("请输入开始时间和结束时间");
+		return false;
+	}
+	window.location.href="apply-list.html?date1="+date1+"&date2="+date2;
+});
+
+/*删除*/
+function apply_del(obj,id){
+	layer.confirm('确认要删除吗？',function(index){
+		$.ajax({
+			type: 'DELETE',
+			url: ApiUrl+'apply/'+id,
+			dataType: 'json',
+			success: function(data){
+				layer.msg('已删除!',{icon:1,time:1000});
+				   $('.table-apply').DataTable().ajax.reload();
+
+			},
+			error:function(data) {
+				console.log(data);
+			},
+		});		
+	});
+}
+function getUrlParam(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+}
+</script>
+</body>
+</html>

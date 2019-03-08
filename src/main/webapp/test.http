@@ -1,0 +1,6 @@
+PUT http://www.hgts.com/api/apply/7181
+content-type: application/json
+
+{
+  "solutionFlag":1
+}

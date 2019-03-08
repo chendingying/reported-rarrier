@@ -12,4 +12,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SectionNameBiz extends BaseBiz<SectionNameMapper,SectionName>{
+
+    public SectionName selectIdForName(String name){
+        return mapper.selectIdForName(name);
+    }
 }

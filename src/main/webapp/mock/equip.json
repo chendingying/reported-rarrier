@@ -1,0 +1,497 @@
+[{
+    "EquipNameCode": "999",
+    "EquipNameMess": "应用系统"
+},
+{
+    "EquipNameCode": "000",
+    "EquipNameMess": "其他 "
+},
+{
+    "EquipNameCode": "101AC     ",
+    "EquipNameMess": "系统11物品检查设备"
+},
+{
+    "EquipNameCode": "101AD     ",
+    "EquipNameMess": "系统12物品检查设备"
+},
+{
+    "EquipNameCode": "101AH     ",
+    "EquipNameMess": "系统10邮包检查设备"
+},
+{
+    "EquipNameCode": "101AL     ",
+    "EquipNameMess": "X光检查机"
+},
+{
+    "EquipNameCode": "101BD     ",
+    "EquipNameMess": "金属探测门                                             "
+},
+{
+    "EquipNameCode": "101BIA    ",
+    "EquipNameMess": "个人射线计量仪"
+},
+{
+    "EquipNameCode": "101BIB    ",
+    "EquipNameMess": "人身安全防护用品"
+},
+{
+    "EquipNameCode": "101D      ",
+    "EquipNameMess": "货柜车、集装箱检查设备"
+},
+{
+    "EquipNameCode": "101E      ",
+    "EquipNameMess": "金属探测器"
+},
+{
+    "EquipNameCode": "101F      ",
+    "EquipNameMess": "电子地磅"
+},
+{
+    "EquipNameCode": "101X      ",
+    "EquipNameMess": "其它检查设备"
+},
+{
+    "EquipNameCode": "102AA     ",
+    "EquipNameMess": "基地台"
+},
+{
+    "EquipNameCode": "102AB     ",
+    "EquipNameMess": "车船台"
+},
+{
+    "EquipNameCode": "102AC     ",
+    "EquipNameMess": "手提台"
+},
+{
+    "EquipNameCode": "102AD     ",
+    "EquipNameMess": "充电器"
+},
+{
+    "EquipNameCode": "102AH     ",
+    "EquipNameMess": "双工器"
+},
+{
+    "EquipNameCode": "102AKB    ",
+    "EquipNameMess": "“大哥大”车台"
+},
+{
+    "EquipNameCode": "102AKC    ",
+    "EquipNameMess": "“大哥大”手台"
+},
+{
+    "EquipNameCode": "102AKD    ",
+    "EquipNameMess": "“大哥大”便携台"
+},
+{
+    "EquipNameCode": "102AKE    ",
+    "EquipNameMess": "手机"
+},
+{
+    "EquipNameCode": "102ALD    ",
+    "EquipNameMess": "“二哥大”便携台"
+},
+{
+    "EquipNameCode": "102BA     ",
+    "EquipNameMess": "短波机"
+},
+{
+    "EquipNameCode": "102BC     ",
+    "EquipNameMess": "天线调谐器"
+},
+{
+    "EquipNameCode": "102CB     ",
+    "EquipNameMess": "传真保密机"
+},
+{
+    "EquipNameCode": "102DA     ",
+    "EquipNameMess": "程控交换机"
+},
+{
+    "EquipNameCode": "102DE     ",
+    "EquipNameMess": "话务台"
+},
+{
+    "EquipNameCode": "102E      ",
+    "EquipNameMess": "传真机"
+},
+{
+    "EquipNameCode": "102FF     ",
+    "EquipNameMess": "微波天线"
+},
+{
+    "EquipNameCode": "102GB     ",
+    "EquipNameMess": "卫星中心站"
+},
+{
+    "EquipNameCode": "102GC     ",
+    "EquipNameMess": "卫星定位系统（GPS）"
+},
+{
+    "EquipNameCode": "102HA     ",
+    "EquipNameMess": "光端机"
+},
+{
+    "EquipNameCode": "102X      ",
+    "EquipNameMess": "其他通信设备"
+},
+{
+    "EquipNameCode": "103AAJ    ",
+    "EquipNameMess": "VAX4000"
+},
+{
+    "EquipNameCode": "103AAS    ",
+    "EquipNameMess": "其他小型机"
+},
+{
+    "EquipNameCode": "103ABAA   ",
+    "EquipNameMess": "P2"
+},
+{
+    "EquipNameCode": "103ABAB   ",
+    "EquipNameMess": "P3"
+},
+{
+    "EquipNameCode": "103ABAC   ",
+    "EquipNameMess": "微机"
+},
+{
+    "EquipNameCode": "103ABB    ",
+    "EquipNameMess": "多媒体"
+},
+{
+    "EquipNameCode": "103ABC    ",
+    "EquipNameMess": "专用服务器"
+},
+{
+    "EquipNameCode": "103ABE    ",
+    "EquipNameMess": "微机一体机"
+},
+{
+    "EquipNameCode": "103ABF    ",
+    "EquipNameMess": "显示器"
+},
+{
+    "EquipNameCode": "103ABG    ",
+    "EquipNameMess": "笔记本电脑"
+},
+{
+    "EquipNameCode": "103ABH    ",
+    "EquipNameMess": "掌上电脑"
+},
+{
+    "EquipNameCode": "103BA     ",
+    "EquipNameMess": "磁盘机"
+},
+{
+    "EquipNameCode": "103BB     ",
+    "EquipNameMess": "磁带机"
+},
+{
+    "EquipNameCode": "103BDA    ",
+    "EquipNameMess": "针式打印机                                             "
+},
+{
+    "EquipNameCode": "103BDB    ",
+    "EquipNameMess": "喷墨打印机"
+},
+{
+    "EquipNameCode": "103BDD    ",
+    "EquipNameMess": "激光打印机"
+},
+{
+    "EquipNameCode": "103BEA    ",
+    "EquipNameMess": "中英文终端"
+},
+{
+    "EquipNameCode": "103BF     ",
+    "EquipNameMess": "光盘机"
+},
+{
+    "EquipNameCode": "103BG     ",
+    "EquipNameMess": "扫描仪"
+},
+{
+    "EquipNameCode": "103BH     ",
+    "EquipNameMess": "读卡器"
+},
+{
+    "EquipNameCode": "103BX     ",
+    "EquipNameMess": "其他外部设备"
+},
+{
+    "EquipNameCode": "103CA     ",
+    "EquipNameMess": "数传机"
+},
+{
+    "EquipNameCode": "103CC     ",
+    "EquipNameMess": "终端服务器"
+},
+{
+    "EquipNameCode": "103CD     ",
+    "EquipNameMess": "路由器"
+},
+{
+    "EquipNameCode": "103CE     ",
+    "EquipNameMess": "互联器"
+},
+{
+    "EquipNameCode": "103CF     ",
+    "EquipNameMess": "远程终端服务器"
+},
+{
+    "EquipNameCode": "103CG     ",
+    "EquipNameMess": "集线器（HUB）"
+},
+{
+    "EquipNameCode": "103CH     ",
+    "EquipNameMess": "网络交换机"
+},
+{
+    "EquipNameCode": "103CI     ",
+    "EquipNameMess": "光端机"
+},
+{
+    "EquipNameCode": "103CJ     ",
+    "EquipNameMess": "传导干扰器"
+},
+{
+    "EquipNameCode": "103CL     ",
+    "EquipNameMess": "触摸屏"
+},
+{
+    "EquipNameCode": "103CX     ",
+    "EquipNameMess": "其它网络服务器"
+},
+{
+    "EquipNameCode": "103CY     ",
+    "EquipNameMess": "网络设备配件"
+},
+{
+    "EquipNameCode": "103DA     ",
+    "EquipNameMess": "不间断电源"
+},
+{
+    "EquipNameCode": "103DB     ",
+    "EquipNameMess": "稳压电源"
+},
+{
+    "EquipNameCode": "103DC     ",
+    "EquipNameMess": "变压器"
+},
+{
+    "EquipNameCode": "103X      ",
+    "EquipNameMess": "其他计算机设备"
+},
+{
+    "EquipNameCode": "104AAA    ",
+    "EquipNameMess": "黑白摄像机"
+},
+{
+    "EquipNameCode": "104AAB    ",
+    "EquipNameMess": "彩色摄像机"
+},
+{
+    "EquipNameCode": "104ABA    ",
+    "EquipNameMess": "黑白监视器"
+},
+{
+    "EquipNameCode": "104ABB    ",
+    "EquipNameMess": "彩色监视器"
+},
+{
+    "EquipNameCode": "104AC     ",
+    "EquipNameMess": "时滞录相机"
+},
+{
+    "EquipNameCode": "104AD     ",
+    "EquipNameMess": "控制系统"
+},
+{
+    "EquipNameCode": "104AEA    ",
+    "EquipNameMess": "自动光圈镜头"
+},
+{
+    "EquipNameCode": "104AEB    ",
+    "EquipNameMess": "变焦镜头"
+},
+{
+    "EquipNameCode": "104AF     ",
+    "EquipNameMess": "防护罩"
+},
+{
+    "EquipNameCode": "104AG     ",
+    "EquipNameMess": "解码器"
+},
+{
+    "EquipNameCode": "104AH     ",
+    "EquipNameMess": "视频分配器"
+},
+{
+    "EquipNameCode": "104AI     ",
+    "EquipNameMess": "支架"
+},
+{
+    "EquipNameCode": "104AK     ",
+    "EquipNameMess": "云台"
+},
+{
+    "EquipNameCode": "104AL     ",
+    "EquipNameMess": "画面分割器"
+},
+{
+    "EquipNameCode": "104AM     ",
+    "EquipNameMess": "视频放大器"
+},
+{
+    "EquipNameCode": "104AN     ",
+    "EquipNameMess": "视频主机"
+},
+{
+    "EquipNameCode": "104BA     ",
+    "EquipNameMess": "普通录音机"
+},
+{
+    "EquipNameCode": "104BB     ",
+    "EquipNameMess": "微型录音机"
+},
+{
+    "EquipNameCode": "104E      ",
+    "EquipNameMess": "报警器"
+},
+{
+    "EquipNameCode": "104X      ",
+    "EquipNameMess": "其他监视、监听设备"
+},
+{
+    "EquipNameCode": "105AAA    ",
+    "EquipNameMess": "业务级摄像机"
+},
+{
+    "EquipNameCode": "105AAB    ",
+    "EquipNameMess": "广播级摄像机"
+},
+{
+    "EquipNameCode": "105AAC    ",
+    "EquipNameMess": "一体化摄像机"
+},
+{
+    "EquipNameCode": "105AAD    ",
+    "EquipNameMess": "家用级摄像机"
+},
+{
+    "EquipNameCode": "105ABA    ",
+    "EquipNameMess": "业务级编辑录像机"
+},
+{
+    "EquipNameCode": "105ABB    ",
+    "EquipNameMess": "广播级编辑录像机"
+},
+{
+    "EquipNameCode": "105ACB    ",
+    "EquipNameMess": "广播级特技发生器"
+},
+{
+    "EquipNameCode": "105AE     ",
+    "EquipNameMess": "字幕编辑系统"
+},
+{
+    "EquipNameCode": "105BA     ",
+    "EquipNameMess": "小1/2”检查设备"
+},
+{
+    "EquipNameCode": "105BB     ",
+    "EquipNameMess": "大1/2”检查设备"
+},
+{
+    "EquipNameCode": "105BE     ",
+    "EquipNameMess": "配套监视器"
+},
+{
+    "EquipNameCode": "105BF     ",
+    "EquipNameMess": "激光视盘机"
+},
+{
+    "EquipNameCode": "105CA     ",
+    "EquipNameMess": "照像机                                               "
+},
+{
+    "EquipNameCode": "105CD     ",
+    "EquipNameMess": "镜头及闪光灯                                            "
+},
+{
+    "EquipNameCode": "105DB     ",
+    "EquipNameMess": "投影仪"
+},
+{
+    "EquipNameCode": "105DG     ",
+    "EquipNameMess": "调音台"
+},
+{
+    "EquipNameCode": "105DH     ",
+    "EquipNameMess": "银幕"
+},
+{
+    "EquipNameCode": "105DX     ",
+    "EquipNameMess": "其它电教设备"
+},
+{
+    "EquipNameCode": "105X      ",
+    "EquipNameMess": "其它录证设备"
+},
+{
+    "EquipNameCode": "106AA     ",
+    "EquipNameMess": "综合检查灯"
+},
+{
+    "EquipNameCode": "106AB     ",
+    "EquipNameMess": "红外线检查灯"
+},
+{
+    "EquipNameCode": "106CA     ",
+    "EquipNameMess": "比较显微镜"
+},
+{
+    "EquipNameCode": "106D      ",
+    "EquipNameMess": "压痕仪"
+},
+{
+    "EquipNameCode": "106F      ",
+    "EquipNameMess": "红外证件检查仪"
+},
+{
+    "EquipNameCode": "106H      ",
+    "EquipNameMess": "电了地磅"
+},
+{
+    "EquipNameCode": "106J      ",
+    "EquipNameMess": "调查作业箱"
+},
+{
+    "EquipNameCode": "106X      ",
+    "EquipNameMess": "其它化验、鉴别设备"
+},
+{
+    "EquipNameCode": "108AC     ",
+    "EquipNameMess": "稳压电源"
+},
+{
+    "EquipNameCode": "108AD     ",
+    "EquipNameMess": "万用表"
+},
+{
+    "EquipNameCode": "108BF     ",
+    "EquipNameMess": "误码表"
+},
+{
+    "EquipNameCode": "108X      ",
+    "EquipNameMess": "其他维修、测试仪器"
+},
+{
+    "EquipNameCode": "109X      ",
+    "EquipNameMess": "其他检修机械、工具"
+},
+{
+    "EquipNameCode": "301A      ",
+    "EquipNameMess": "复印机"
+}
+]

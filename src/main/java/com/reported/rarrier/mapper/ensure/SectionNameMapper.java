@@ -1,6 +1,7 @@
 package com.reported.rarrier.mapper.ensure;
 
 import com.reported.rarrier.model.ensure.SectionName;
+import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
 /**
@@ -9,4 +10,5 @@ import tk.mybatis.mapper.common.Mapper;
  * @Version 1.0
  */
 public interface SectionNameMapper extends Mapper<SectionName> {
+    SectionName selectIdForName(@Param("name") String name);
 }

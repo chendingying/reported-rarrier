@@ -1,0 +1,35 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <filter>
+    <filter-name>passport filter</filter-name>
+    <filter-class>cn.gov.customs.casp.sdk.h4a.sso.passport.PassportFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>passport filter</filter-name>
+    <url-pattern>*.flow</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>passport filter</filter-name>
+    <url-pattern>*.flowx</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>passport filter</filter-name>
+    <url-pattern>*.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>passport filter</filter-name>
+    <url-pattern>*.html</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <servlet-name>LogOff</servlet-name>
+    <servlet-class>cn.gov.customs.casp.sdk.h4a.sso.passport.LogOff</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>interface init</servlet-name>
+    <servlet-class>cn.gov.customs.casp.sdk.h4a.sso.passport.wcfinterface.InterfaceInit</servlet-class>
+  </servlet>
+</web-app>

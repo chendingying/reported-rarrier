@@ -1,0 +1,215 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5shiv.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>用户查看</title>
+</head>
+<body>
+<div class="cl pd-20" style=" background-color:#5bacb6">
+	<dl style="margin-left:80px; color:#fff">
+		<dt>
+			<span class="f-14">申请部门：</span>
+			<span class=" f-14 applyDept"></span>
+		</dt>
+		<dt>
+			<span class="f-14">申请人员：</span>
+			<span class="f-14 applyDisplayName" ></span>
+		</dt>
+		<dt>
+			<span class="f-14">联系方式：</span>
+			<span class="f-14 applyPhone"></span>
+		</dt>
+		<dt>
+			<span class="f-14">申请时间：</span>
+			<span class="f-14 applyDate"></span>
+		</dt>
+		<dt>
+			<span class="f-14">资产编号：</span>
+			<a href="javascript:void(0)" id="btn-asset" class="f-14 equipCustomsCode" ></a>(点击编号可查看详细信息)
+		</dt>
+		<dt>
+			<span class="f-14">故障现象：</span>
+			<span class="f-12 applyNote"></span>
+		</dt>
+		<dt>
+			<span class="f-14">上传图片：</span>
+		</dt>
+		<dt>
+			<span class="uploadFile" style="padding-left: 75px"></span>
+		</dt>
+	</dl>
+</div>
+<div class="pd-20">
+	<table class="table">
+		<tbody>
+			<tr>
+				<th class="text-r" width="80">受理人员：</th>
+				<td class="sLDisplayName"><input type="" name=""></td>
+			</tr>
+			<tr>
+				<th class="text-r" width="80">处理结果</th>
+				<td class="">
+					<input type="radio" name="solutionFlag" value="1">正在处理 
+					<input type="radio" name="solutionFlag" value="2" checked>处理完毕 
+					<input type="radio" name="solutionFlag" value="4">暂存 
+					<input type="radio" name="solutionFlag" value="5">送修 
+					<input type="radio" name="solutionFlag" value="6">更换硬件 
+					<input type="radio" name="solutionFlag" value="7">经费申请 
+				</td>
+			</tr>
+			<tr>
+				<th class="text-r">维修过程：</th>
+				<td ><textarea class="sNote" name="sNote" cols="100" rows="8"></textarea></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="cl pd-5 bg-1 bk-gray mt-20 op" style="padding-left: 70%">
+	<span class=""><a class="btn btn-primary handle"><i class="Hui-iconfont">&#xe63c;</i> 提交维修过程 </a></span>
+</div>
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="lib/common.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> 
+<!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script>
+var userinfo=window.top.userinfo;
+$(function(){
+	var id=getUrlParam("id");
+	var username=userinfo.objectsDetail.display_name;
+	$.get(ApiUrl+"apply/all?applyId="+id,function(data){
+		var d=data[0];
+		$(".applyDept").html(d.applyDept+"\\"+d.applyOU+"\\"+d.applySec);
+		$(".applyDisplayName").html(d.applyDisplayName);
+		$(".applyPhone").html(d.applyPhone);
+		$(".applyDate").html(d.applyDate);
+		$(".sLDisplayName").html(username);
+		$(".equipCustomsCode").html(d.equipCustomsCode);
+		$(".applyNote").html(d.applyNote);
+			if(d.uploadFile){
+			$('.uploadFile').append("<img src='upload/"+d.uploadFile+"'class='radius' width='200' />")
+		}
+	});
+});
+$('.handle').on('click',function(){
+				  var loginid=userinfo.objectsDetail.person_id;
+	  			  var username=userinfo.objectsDetail.display_name;
+	  			  var dpname=userinfo.dept_path_array[3];
+				  var id=getUrlParam('id');
+				  var snote=$(".sNote").val();
+				  var sldate= (new Date()).Format("yyyy-MM-dd hh:mm:ss");
+				  var solutionFlag=$('input:radio:checked').val();
+				  if(snote==""){
+				  	layer.alert('请输入处理过程', {icon: 2});
+				  	return false;
+				  }
+				  var param={
+				  	"applyId":id,
+				  	"sNote":snote,
+				  	"display_Name":username,
+				  	"sLTSection":dpname,
+				  	"logon_Name":loginid,
+				  	"sLTDate":sldate,
+				  	"solutionFlag":solutionFlag
+				  }
+				  $.ajax({
+		            url:ApiUrl+"solution",
+		            type:"POST",
+		            data:JSON.stringify(param),
+		            contentType: 'application/json',
+		            success:function(){
+		            	//更新Apply表
+		                 updateApply();
+		             }
+				});
+});
+//更新Apply表
+function updateApply(){
+	var cldate= (new Date()).Format("yyyy-MM-dd hh:mm:ss.000");
+	var id=getUrlParam('id');
+	 $.ajax({
+	 	  url:ApiUrl+"apply/"+id,
+	 	    type:"PUT",
+		    data:JSON.stringify({"solutionFlag":"2","cLDate":cldate}),
+		    contentType: 'application/json',        
+		     success:function(){        
+		        layer.msg('已提交维修过程，等待报障人确认', {icon: 1,time:2000});
+		         setTimeout(function(){ 
+		             window.location.href="apply-list.html";
+		         }, 3000);               
+		               
+		     }
+	 });
+}
+//通过编号查询海关资产信息
+$("#btn-asset").on('click',function(){
+    var asset_no=$(this).html();
+    if(asset_no){
+        var url="../reportedRarrier/api/nufac/select/"+asset_no;
+        $.get(url,function(data){
+           if(data.rel){
+            var i=data.data[0];
+            var html="<table class='table table-border table-bordered'>";
+                html+="<tr><td>资产编号</td><td>"+i.AS_NUM+"</td><td>资产名称</td><td>"+i.AS_NAME+"</td></tr>";
+                html+="<tr><td>采购价格</td><td>"+i.AS_PRC+"元</td><td>品牌型号</td><td>"+i.AB_NAME+i.AS_MODEL+"</td></tr>";
+                html+="<tr><td>资产来源</td><td>"+i.SC_NAME+"</td><td>登记日期</td><td>"+i.AS_COL_DATE+"</td></tr>";
+                html+="</table>";
+                layer.open({type: 1, skin: 'layui-layer-rim', area: ['500px', '220px'],content: html });
+            
+           }
+           else{
+               alert('无此设备编号');
+           }
+        });
+    }
+    else{
+        alert('无此设备编号!');
+    }
+});
+function getUrlParam(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+}
+// 对Date的扩展，将 Date 转化为指定格式的String
+    // 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符， 
+    // 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字) 
+    Date.prototype.Format = function (fmt) { //author: meizz 
+        var o = {
+            "M+": this.getMonth() + 1, //月份 
+            "d+": this.getDate(), //日 
+            "h+": this.getHours(), //小时 
+            "m+": this.getMinutes(), //分 
+            "s+": this.getSeconds(), //秒 
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+            "S": this.getMilliseconds() //毫秒 
+        };
+        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+    }
+</script>
+</body>
+</html>
